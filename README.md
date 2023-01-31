@@ -4,18 +4,20 @@ This repository contains regularly updated course materials. You can use lecture
 
 # Lecture slides
 
-* Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Introduction
-* Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Stability
-* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Laplace
-* Lecture 4 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Bode
-* Lecture 5 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Control
-* Lecture 6 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Discrete
-* Lecture 7 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/LyapunovTheory
-* Lecture 8 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/HJB_LQR
-* Lecture 9 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Observer
-* Lecture 10 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/ControllabilityObservability
-* Lecture 11 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/LMI
-* Lecture 12 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Linearization
+* Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Introduction
+
+
+* Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Stability
+* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Laplace
+* Lecture 4 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Bode
+* Lecture 5 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Control
+* Lecture 6 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Discrete
+* Lecture 7 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/LyapunovTheory
+* Lecture 8 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/HJB_LQR
+* Lecture 9 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Observer
+* Lecture 10 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/ControllabilityObservability
+* Lecture 11 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/LMI
+* Lecture 12 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Linearization
 
 # Lecture videos (2022 offering)
 
@@ -37,33 +39,9 @@ This repository contains regularly updated course materials. You can use lecture
 
 # Tutorial slides
 
-* Tutorial 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Tutorials/Tutorial_1.pdf
-* Tutorial 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Tutorials/Tutorial_2.pdf
-* Tutorial 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Tutorials/Tutorial_3
-* Tutorial 4 - 
 
-# Tutorial videos (2022 offering)
 
-* Tutorial 1 (part 1) - https://youtu.be/OCQ2feevtoY
-* Tutorial 2 - https://youtu.be/DOo4Pe5V2gA
-* Tutorial 3 - https://youtu.be/tAubn9MKIW0
-* Tutorial 4 - https://youtu.be/usqDiJLELX8
 
-# Lecture videos (2021 offering)
-
-([playlist](https://www.youtube.com/watch?v=x2cYtqJR-qg&list=PLlxR_sEKjSpTyteBJYJR6WBuAlPineEwz))
-
-* Lecture 2 - https://youtu.be/x2cYtqJR-qg
-* Lecture 4 - https://youtu.be/geeaciySBHY
-* Lecture 5 - https://youtu.be/c9yNjq2vtpw
-* Lecture 6 - https://youtu.be/qTIOv82XAQE
-* Lecture 7 - https://youtu.be/VS0NC_a8kQY
-* Lecture 8 - https://youtu.be/FIGE0Cyi55g
-* Lecture 10 - https://youtu.be/BhcDmOQjdGo
-* Lecture 11 - https://youtu.be/bpNQWrEUZY0
-* Lecture 12 - version 1: https://youtu.be/q_WRiwkgnGU version 2: https://youtu.be/6K9B8EWCIzw
-* Lecture 13 - https://youtu.be/UGLLSpwozTE
-* Lecture 14 - https://youtu.be/D-8M8XEygeg
 
 # Assignments (labs)
 
