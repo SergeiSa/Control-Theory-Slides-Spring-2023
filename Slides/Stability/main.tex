@@ -24,12 +24,6 @@
 \item Stability vs Asymptotic stability
 \item LTI and autonomous LTI
 \item Stability of autonomous LTI
-    \begin{itemize}
-    \item Example: real eigenvalues
-    \item Example: complex eigenvalues
-    \item General case
-    \item Illustration
-    \end{itemize}
 \item Read more
 \end{itemize}
 
@@ -76,7 +70,7 @@ Think of it as "for any initial point that lies at most $\delta$ away from $\bo{
 
 \bigskip
 
-Or, more picturesque, think of it as "the solutions with different initial conditions do not diverge from the node"
+Or, more picturesque, think of it as "the solutions starting from $\delta$-sized ball do not diverge"
 
 \end{flushleft}
 \end{frame}
@@ -99,7 +93,7 @@ Think of it as "for any initial point that lies at most $\delta$ away from $\bo{
 
 \bigskip
 
-Or, more picturesque, think of it as "the solutions with different initial conditions converge to the node"
+Or, more picturesque, think of it as ""the solutions starting from $\delta$-sized ball converge to the node"
 
 \end{flushleft}
 \end{frame}
@@ -128,7 +122,7 @@ Consider dynamical system $\dot{x} = x$, and solution $x = 0$. This solution is 
 
 
 
-\begin{frame}{LTI and autonomous LTI}
+\begin{frame}{Linear systems}
 % \framesubtitle{O}
 \begin{flushleft}
 
@@ -138,22 +132,48 @@ Consider the following linear ODE:
     \dot{\bo{x}} = \bo{A} \bo{x} + \bo{B} \bo{u}
 \end{equation}
 
-This is called a \emph{linear time-invariant system}, or \emph{LTI}.
+This is called a \emph{linear time-invariant system}, or \emph{LTI}, indicating that $\bo{A}$ and $\bo{B}$ are constant.
 
 \bigskip
 
-Consider the following linear ODE:
+Removing the input we find an even simpler equation:
 
 \begin{equation}
     \dot{\bo{x}} = \bo{A} \bo{x}
 \end{equation}
 
-This is also an LTI, but it is also called an \emph{autonomous system}, since its evolution depends only on the state of the system.
+This is also an LTI, and it is also called an \emph{autonomous system}, since its evolution depends only on the state of the system.
 
 \end{flushleft}
 \end{frame}
 
 
+
+
+\begin{frame}{Stability of autonomous LTI}
+	\framesubtitle{Real eigenvalues}
+	\begin{flushleft}
+		
+		Consider autonomous LTI:
+		
+		\begin{equation}
+			\dot{\bo{x}} = \bo{D} \bo{x}
+		\end{equation}
+		
+		where $\bo{D} = \text{diag}(d_1, \ ..., \ d_n)$ is a diagonal matrix. This is the same as a system of independent equations: 
+		
+		\begin{equation}
+			\begin{cases}
+				\dot{x}_1 = d_1 x_1 \\
+				... \\
+				\dot{x}_n = d_n x_n
+			\end{cases}
+		\end{equation}		
+		
+		Each of these equations has an exact solution $ x_i = C_i e^{d_i t}$. It diverges from 0 if $d_i > 0$, it does not diverge if $d_i \leq 0$ and it converges to 0 if $d_i < 0$.
+		
+	\end{flushleft}
+\end{frame}
 
 
 \begin{frame}{Stability of autonomous LTI}
@@ -174,13 +194,12 @@ where $\bo{A}$ can be decomposed via eigen-decomposition as $\bo{A} = \bo{V} \bo
     \dot{\bo{x}} = \bo{V} \bo{D} \bo{V}^{-1} \bo{x}
 \end{equation}
 
-Multiply it by $\bo{V}^{-1} 
-\ \longrightarrow \ 
-\bo{V}^{-1} \dot{\bo{x}} = \bo{V}^{-1} \bo{V} \bo{D} \bo{V}^{-1} \bo{x}$.
+Multiplying it by $\bo{V}^{-1}$ 
+we get: 
+$\bo{V}^{-1} \dot{\bo{x}} = \bo{V}^{-1} \bo{V} \bo{D} \bo{V}^{-1} \bo{x}$.
 
-Define $\bo{z} = \bo{V}^{-1} \bo{x} 
-\ \longrightarrow \
-\dot{\bo{z}} = \bo{D} \bo{z}$.
+Defining $\bo{z} = \bo{V}^{-1} \bo{x}$ we transform the equation: 
+$\dot{\bo{z}} = \bo{D} \bo{z}$.
 
 \bigskip
 
@@ -188,6 +207,66 @@ Since elements of $\bo{D}$ are real, we can clearly see, that iff they are \emph
 
 \end{flushleft}
 \end{frame}
+
+
+
+
+\begin{frame}{Upper triangular matrices}
+%	\framesubtitle{Real eigenvalues}
+	\begin{flushleft}
+		
+		Examples of upper triangular matrices are:
+		
+		\begin{equation}
+			\begin{bmatrix}
+				1 & 5 & -2 \\
+				0 & 3 & 1 \\
+				0 & 0 & -2
+			\end{bmatrix},
+		\ \ \ 
+		\begin{bmatrix}
+			-2 & 0 & 8 \\
+			0 & -2 & 8 \\
+			0 & 0 & 7
+		\end{bmatrix},
+	\ \ \ 
+		\begin{bmatrix}
+			4 & 1 \\
+			0 & 3
+		\end{bmatrix}
+		\end{equation}
+		
+		Eigenvalues of upper triangular matrices are the diagonal elements of these matrices.
+		
+	\end{flushleft}
+\end{frame}
+
+
+\begin{frame}{Upper triangular matrices}
+	%	\framesubtitle{Real eigenvalues}
+	\begin{flushleft}
+		
+		Consider autonomous LTI:
+		
+		\begin{equation}
+			\dot{\bo{x}} = \bo{M} \bo{x}
+		\end{equation}
+	
+	where $ \bo{M}$ is an upper triangular matrices with negative eigenvalues $m_{1,1}$, ... $m_{n,n}$.
+	
+	\bigskip
+	
+	The last equation is $\dot x_n = m_{n,n} x_n$, and since $m_{n,n} < 0$ we can observe that $\underset{t \rightarrow \infty}{\text{lim}} x_n(t) = 0$.
+	
+	\bigskip
+	
+	The equation \# n-1 is $\dot x_{n-1} = m_{n-1,n-1} x_{n-1} + m_{n-1,n} x_n$, and since $m_{n-1,n-1} < 0$ and $\underset{t \rightarrow \infty}{\text{lim}} x_n(t) = 0$ we can observe that $\underset{t \rightarrow \infty}{\text{lim}} x_{n-1}(t) = 0$.
+	
+	This can be repeated for all equations, proving asymptotic stability for the system.
+	
+	\end{flushleft}
+\end{frame}
+
 
 
 
@@ -400,11 +479,14 @@ Here is an illustration of \emph{phase portraits} of two-dimensional LTIs with d
 
 
 
-\begin{frame}{Read more}
+\begin{frame}{Read/Watch more}
 
 \begin{itemize}
 \item Control Systems Design, by Julio H. Braslavsky \bref{http://staff.uz.zgora.pl/wpaszke/materialy/spc/Lec13.pdf}{staff.uz.zgora.pl/wpaszke/materialy/spc/Lec13.pdf}
 
+\item Stability and Eigenvalues, Steve Brunton \bref{https://youtu.be/h7nJ6ZL4Lf0 }{youtu.be/h7nJ6ZL4Lf0}
+
+\item MAE509 (LMIs in Control): Lecture 4, part A - Stability and Eigenvalues  \bref{https://youtu.be/8zYOJbpiT38 }{youtu.be/8zYOJbpiT38}
 
 \end{itemize}
 
