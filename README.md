@@ -5,8 +5,6 @@ This repository contains regularly updated course materials. You can use lecture
 # Lecture slides
 
 * Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Introduction
-
-
 * Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Stability
 * Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Laplace
 * Lecture 4 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Bode
@@ -19,19 +17,19 @@ This repository contains regularly updated course materials. You can use lecture
 * Lecture 11 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/LMI
 * Lecture 12 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Linearization
 
-# Lecture videos (2022 offering)
+# Lecture videos:
 
-([playlist](https://www.youtube.com/playlist?list=PLlxR_sEKjSpQ2pmaZeut4ePfMtK_26UPh))
+([playlist](https://www.youtube.com/watch?v=yxns2JKQK0M&list=PLlxR_sEKjSpRACHIQZcKNm-KjNQWlAltM&ab_channel=SergeiS))
 
-* Lecture 1 (State Space) - https://youtu.be/HvfmIQutCyI
-* Lecture 2 (Stability) - https://youtu.be/YmNDcHZpUm8
-* Lecture 3 (Laplace, Transfer functions) - https://youtu.be/I-UykNTLWoQ
-* Lecture 4 (Bode) - https://youtu.be/E5uhziFTVrk
-* Lecture 5 (Stabilizing control) - https://youtu.be/jHvSm5WH_-A 
-* Lecture 6 (Discrete) - https://youtu.be/fLA6oJ5QjfY
-* Lecture 7 (Lyapunov) - https://youtu.be/pA9NtQoKtSI
-* Lecture 9 (LQR, Riccati) - https://youtu.be/fdUl5mxnl2Y
-* Lecture 10 (Observers) - https://youtu.be/L1QriA3DMdA
+* Lecture 1 (State Space) - https://youtu.be/yxns2JKQK0M
+* Lecture 2 (Stability) - 
+* Lecture 3 (Laplace, Transfer functions) - 
+* Lecture 4 (Bode) - 
+* Lecture 5 (Stabilizing control) - 
+* Lecture 6 (Discrete) - 
+* Lecture 7 (Lyapunov) - 
+* Lecture 9 (LQR, Riccati) - 
+* Lecture 10 (Observers) -
 * Lecture 11 - 
 * Lecture 12 - 
 * Lecture 13 - 
@@ -151,6 +149,7 @@ https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-241j-d
 
 ## Lecture 11 Controllability, Observability
 
+* MIT 2.14, State Space response https://web.mit.edu/2.14/www/Handouts/StateSpaceResponse.pdf
 * Invariant subspaces, Sylvester equation, PBH https://stanford.edu/class/ee363/sessions/s2notes.pdf
 * EE363 Winter 2008-09 Lecture 6 Invariant subspaces https://web.stanford.edu/class/ee363/lectures/inv-sub.pdf
 
