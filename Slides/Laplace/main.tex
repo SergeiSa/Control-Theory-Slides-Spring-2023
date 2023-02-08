@@ -36,45 +36,45 @@
 
 
 
-
-\begin{frame}{ODE solutions}
-% \framesubtitle{O}
-\begin{flushleft}
-
-\begin{equation}
-    \begin{bmatrix}
-    \dot x_1 \\ \dot x_2 \\ \dot x_3
-    \end{bmatrix}
-    \begin{bmatrix}
-    0 & 1 & 0 \\ 0 & 0 & 1 \\ -5 & -10 & -10
-    \end{bmatrix}
-    \begin{bmatrix}
-    x_1 \\ x_2 \\ x_3
-    \end{bmatrix}
-    +
-    \begin{bmatrix}
-    0\\ 0 \\ 10
-    \end{bmatrix}
-    u
-\end{equation}
-
-\begin{figure}
-\minipage{0.32\textwidth}
-  \includegraphics[width=\linewidth]{Autonomous.png}
-\caption{Autonomous ODE ($u = 0$)}
-\endminipage\hfill
-\minipage{0.32\textwidth}
-  \includegraphics[width=\linewidth]{sine.png}
-\caption{reaction to sine wave ($u = sin(t)$)}
-\endminipage\hfill
-\minipage{0.32\textwidth}%
-  \includegraphics[width=\linewidth]{step.png}
-\caption{Reaction to step function ($u = 1$)}
-\endminipage
-\end{figure}
-
-\end{flushleft}
-\end{frame}
+%
+%\begin{frame}{ODE solutions}
+%% \framesubtitle{O}
+%\begin{flushleft}
+%
+%\begin{equation}
+%    \begin{bmatrix}
+%    \dot x_1 \\ \dot x_2 \\ \dot x_3
+%    \end{bmatrix}
+%    \begin{bmatrix}
+%    0 & 1 & 0 \\ 0 & 0 & 1 \\ -5 & -10 & -10
+%    \end{bmatrix}
+%    \begin{bmatrix}
+%    x_1 \\ x_2 \\ x_3
+%    \end{bmatrix}
+%    +
+%    \begin{bmatrix}
+%    0\\ 0 \\ 10
+%    \end{bmatrix}
+%    u
+%\end{equation}
+%
+%\begin{figure}
+%\minipage{0.32\textwidth}
+%  \includegraphics[width=\linewidth]{Autonomous.png}
+%\caption{Autonomous ODE ($u = 0$)}
+%\endminipage\hfill
+%\minipage{0.32\textwidth}
+%  \includegraphics[width=\linewidth]{sine.png}
+%\caption{reaction to sine wave ($u = sin(t)$)}
+%\endminipage\hfill
+%\minipage{0.32\textwidth}%
+%  \includegraphics[width=\linewidth]{step.png}
+%\caption{Reaction to step function ($u = 1$)}
+%\endminipage
+%\end{figure}
+%
+%\end{flushleft}
+%\end{frame}
 
 
 \begin{frame}{Laplace Transform}
@@ -138,22 +138,16 @@ In our case, $\frac{du}{dt} = \frac{dx}{dt}$, $u = x$, $v = e^{-st}$, $\frac{dv}
 % \framesubtitle{O}
 \begin{flushleft}
 
-Thus, assuming that $x(0) = 0$, we can obtain a \emph{derivative operator}:
+Thus, assuming that $x(0) = 0$ and denoting $\mathcal{L}\left( x \right) = X(s)$, we can obtain a \emph{derivative operator}:
 
 \begin{equation}
 \label{eq:NoIC_laplace}
-\mathcal{L}\left(\frac{dx}{dt}\right) = s \mathcal{L}\left(x\right)
+\mathcal{L}\left(\frac{dx}{dt}\right) = s \mathcal{L}\left(x\right) = s X(s)
 \end{equation}
 
 \bigskip
 
-Please notice that \eqref{eq:NoIC_laplace} is only true when $x(0) = 0$; it generally does not look very elegant either. Introducing a big-time abuse of notation, we can denote $x(s) = \mathcal{L}\left(x\right)$ and then drop the brackets, leaving us with:
-
-\begin{equation}
-\frac{dx}{dt} \longrightarrow s x
-\end{equation}
-
-This form of a derivative operator has a very strange notation in terms of the Laplace transform theory, but is very simple to use in practice.
+This form of a derivative operator is very simple to use in practice.
 
 \end{flushleft}
 \end{frame}
@@ -173,16 +167,16 @@ Consider the following ODE, where $u$ is an input (function of time that influen
 We can rewrite it using the derivative operator:
 
 \begin{equation}
-s^2 x + a s x + b x = u
+s^2 X(s) + a s X(s) + b X(s) = U(s)
 \end{equation}
 
 and then collect $x$ on the left-hand-side:
 
 \begin{equation}
-x = \frac{1}{s^2 + a s + b} u
+X(s) = \frac{1}{s^2 + a s + b} U(s)
 \end{equation}
 
-At this point the mathematical meaning of this expression as an ODE is very vague, but it has a different direct use; this form is called a \emph{transfer function}.
+This form is called a \emph{transfer function}.
 
 \end{flushleft}
 \end{frame}
@@ -196,21 +190,21 @@ At this point the mathematical meaning of this expression as an ODE is very vagu
 Given ODE: $2 \dddot x + 5\dot x - 40 x = 10 u$
 
 The transfer function for it looks: 
-$x = \frac{10}{2 s^3 + 5 s - 40} u$
+$X(s)  = \frac{10}{2 s^3 + 5 s - 40} U(s)$
 \end{example}
 
 
 \begin{example}
 Given ODE: $2 \dot x - 4 x = u$
 
-The transfer function for it looks: $x = \frac{1}{2 s - 4} u$
+The transfer function for it looks: $X(s) = \frac{1}{2 s - 4} U(s)$
 \end{example}
 
 
 \begin{example}
 Given ODE: $3 \dddot x + 4x = u$
 
-The transfer function for it looks: $x = \frac{1}{2 s^3 + 4} u$
+The transfer function for it looks: $X(s) = \frac{1}{2 s^3 + 4} U(s)$
 \end{example}
 
 \end{flushleft}
@@ -232,19 +226,19 @@ Consider the following (strange) ODE:
 Using the differential equation:
 
 \begin{equation}
-2 s^2 x + 3s x + 2x = 10s u - u
+2 s^2 X(s) + 3s X(s) + 2X(s) = 10s U(s) - U(s)
 \end{equation}
 
 ...which is the same as:
 
 \begin{equation}
-(2s^2 + 3s + 2)x = (10s - 1)u
+(2s^2 + 3s + 2)X(s) = (10s - 1)U(s)
 \end{equation}
 
 The transfer function for it looks: 
 
 \begin{equation}
-x = \frac{10s - 1}{2s^2 + 3s + 2} u
+X(s) = \frac{10s - 1}{2s^2 + 3s + 2} U(s)
 \end{equation}
 
 \end{flushleft}
@@ -299,20 +293,20 @@ and finally, express $\bo{y}$ out:
 		Let the dynamic system be described as a transfer function:
 		
 		\begin{equation}
-			y = G(s) x
+			Y(s) = G(s) X(s)
 		\end{equation}
 		
-		We can try to modify the input based on how the output looks-like. Since we always do it in a linear way, we can write it as:
+		We can try to modify the input based on how the output looks. Since we always do it in a linear way, we can write it as:
 		
 		\begin{equation}
-			y = G(s) (x - H(s) y)
+			Y(s) = G(s) (X(s) - H(s) Y(s))
 		\end{equation}
 		
 		where $H(s) y$ is called \emph{feedback}.
 		
 		\bigskip
 		
-		How would the transfer function from $x$ to $y$ look like? 
+		How would the transfer function from $X(s)$ to $Y(s) $ look like? 
 		
 	\end{flushleft}
 \end{frame}
@@ -322,16 +316,16 @@ and finally, express $\bo{y}$ out:
 	% \framesubtitle{O}
 	\begin{flushleft}
 		
-		From $y = G(s) (x - H(s) y)$ we go:
+		From $Y(s)  = G(s) (X(s)  - H(s) Y(s) )$ we go:
 		
 		\begin{equation}
-			y = G(s)x - G(s)H(s) y
+			Y(s)  = G(s)X(s) - G(s)H(s) Y(s) 
 		\end{equation}
 		\begin{equation}
-			y + G(s)H(s) y = G(s)x
+			Y(s)  + G(s)H(s) Y(s)  = G(s)X(s)
 		\end{equation}
 		\begin{equation}
-			y = \frac{G(s)}{1 + G(s)H(s)} x
+			Y(s)  = \frac{G(s)}{1 + G(s)H(s)} X(s)
 		\end{equation}
 		
 		Thus, we found \emph{closed-loop} transfer function:
@@ -360,16 +354,6 @@ and finally, express $\bo{y}$ out:
 
 
 
-\begin{frame}{Thank you!}
-\centerline{Lecture slides are available via Moodle.}
-\bigskip
-\centerline{You can help improve these slides at:}
-\centerline{\mygit}
-\bigskip
-\centerline{Check Moodle for additional links, videos, textbook suggestions.}
-\bigskip
-
-\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
-\end{frame}
+\myqrframe
 
 \end{document}

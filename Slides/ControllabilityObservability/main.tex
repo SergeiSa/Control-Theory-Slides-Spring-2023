@@ -473,11 +473,35 @@ For a system $\bo{x}_{i+1} = \bo{A}  \bo{x}_i + \bo{B} \bo{u}_i$ and $\bo{y}_i =
 		\end{bmatrix}
 		\end{align*}
 		
-		This shows that if controllability matrix is rank-deficient, it would not be possible to achieve some state.
+		This shows that if controllability matrix is rank-deficient, it would not be possible to achieve some state from some initial condition.
 		
 	\end{flushleft}
 \end{frame}
 
+
+
+
+\begin{frame}{PBH controllability criterion}
+	% \framesubtitle{Limited control}
+	\begin{flushleft}
+		
+		There is an alternative way to test if pair $(\bo{A}, \ \bo{B})$ is controllable:
+		
+		\begin{block}{PBH controllability criterion}
+			If for any $\lambda \in \mathbb{C}$, the the matrix $[ (\bo{A}-\lambda\bo{I}), \bo{B}]$ has full row rank, then the pair $(\bo{A}, \ \bo{B})$ is controllable.
+		\end{block}
+		
+		\begin{itemize}
+			\item If $\lambda$ is not an eigenvalue of $\bo{A}$, then $\text{det}(\bo{A}-\lambda\bo{I}) \neq 0$ and the matrix has full row rank.
+			
+			\item If $\text{det}(\bo{A}-\lambda\bo{I}) = 0$ and $\mathcal{V} = \text{null}(\bo{A}-\lambda\bo{I})$, $\text{dim}(\mathcal{V}) = 1$ and $\bo{v} \in \mathcal{V}$ , meaning $\lambda, \ \bo{v}$ are eigenvalue and eigenvector of $\bo{A}$, then in order for the criterion to hold the columns fo $\bo{B}$ should not all be orthogonal to $\bo{v}$: $\bo{v}\T \bo{B} \neq 0$.
+			
+			\item If eigenspace $\mathcal{V}$ is $k$-dimensional, the projection of $\bo{B}$ onto that eigenspace should also be $k$-dimensional.
+			
+		\end{itemize}
+		
+	\end{flushleft}
+\end{frame}
 
 
 
