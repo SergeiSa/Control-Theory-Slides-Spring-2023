@@ -6,9 +6,10 @@ This repository contains regularly updated course materials. You can use lecture
 
 * Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Introduction
 * Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Stability
-* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Laplace
-* Lecture 4 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Bode
-* Lecture 5 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Control
+* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Control
+* 
+* Lecture 4 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Laplace
+* Lecture 5 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Bode
 * Lecture 6 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Discrete
 * Lecture 7 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/LyapunovTheory
 * Lecture 8 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/HJB_LQR
@@ -23,9 +24,9 @@ This repository contains regularly updated course materials. You can use lecture
 
 * Lecture 1 (State Space) - https://youtu.be/yxns2JKQK0M
 * Lecture 2 (Stability) - https://youtu.be/XnNlYsVebkU
-* Lecture 3 (Laplace, Transfer functions) - 
-* Lecture 4 (Bode) - 
-* Lecture 5 (Stabilizing control) - 
+* Lecture 3 (Stabilizing control) - 
+* Lecture 4 (Laplace, Transfer functions) - 
+* Lecture 5 (Bode) - 
 * Lecture 6 (Discrete) - 
 * Lecture 7 (Lyapunov) - 
 * Lecture 9 (LQR, Riccati) - 
@@ -98,7 +99,17 @@ http://www3.imperial.ac.uk/pls/portallive/docs/1/31851696.PDF
 * Videos:
   * State Space Stability (Linear Systems Theory EECS 221a, Berkeley) - https://youtu.be/7GarcEQ0uk8
 
-## Lecture 3. Transfer functions
+
+## Lecture 3. Stabilizing control
+* Control theory by S. Simrock - sections 5, 6 (stability discussed in terms of TF):
+https://cds.cern.ch/record/1100534/files/p73.pdf
+* Module 9: State Feedback Control Design, Lecture Note 1:
+https://nptel.ac.in/content/storage2/courses/108103008/PDF/module9/m9_lec1.pdf
+* 16.31 Feedback Control Systems
+https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-30-feedback-control-systems-fall-2010/lecture-notes/MIT16_30F10_lec11.pdf
+* Chapter 6 State Feedback - http://www.cds.caltech.edu/~murray/books/AM05/pdf/am06-statefbk_16Sep06.pdf
+
+## Lecture 4. Laplace Transform, Transfer functions
 
 * Control System Design, An Introduction to State-Space Methods Bernard Friedland https://books.google.co.in/books/about/Control_System_Design.html?id=9WRKZlaCnF8C&redir_esc=y
   * 3.4 SOLUTION BY THE LAPLACE TRANSFORM: THE RESOLVENT
@@ -114,20 +125,11 @@ http://www3.imperial.ac.uk/pls/portallive/docs/1/31851696.PDF
   * Control Systems Lectures - Transfer Functions, Brian Douglas: https://youtu.be/RJleGwXorUk
   * The Laplace Transform - A Graphical Approach, Brian Douglas: https://youtu.be/ZGPtPkTft8g
 
-## Lecture 4. Frequency response, Bode plot
+## Lecture 5. Frequency response, Bode plot
 
 * Control System Lectures - Bode Plots, Introduction, by Brian Douglas: <https://youtu.be/_eh1conN6YM>
 * Bode Plots by Hand, Real Constants, by Brian Douglas: https://youtu.be/CSAp9ooQRT0
 
-
-## Lecture 5. Stabilizing control
-* Control theory by S. Simrock - sections 5, 6 (stability discussed in terms of TF):
-https://cds.cern.ch/record/1100534/files/p73.pdf
-* Module 9: State Feedback Control Design, Lecture Note 1:
-https://nptel.ac.in/content/storage2/courses/108103008/PDF/module9/m9_lec1.pdf
-* 16.31 Feedback Control Systems
-https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-30-feedback-control-systems-fall-2010/lecture-notes/MIT16_30F10_lec11.pdf
-* Chapter 6 State Feedback - http://www.cds.caltech.edu/~murray/books/AM05/pdf/am06-statefbk_16Sep06.pdf
 
 ## Lecture 6. Discrete Systems
 * Control System Design, An Introduction to State-Space Methods Bernard Friedland https://books.google.co.in/books/about/Control_System_Design.html?id=9WRKZlaCnF8C&redir_esc=y
@@ -148,11 +150,15 @@ https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-241j-d
 
 ## Lecture 9 LQR
 * Linear Quadratic Regulators - http://underactuated.mit.edu/lqr.html
+* Videos:
+  * Linear Quadratic Regulator (LQR) Control for the Inverted Pendulum on a Cart, Steve Brunton https://youtu.be/1_UobILf3cc
 
 ## Lecture 10 Observers
 
 * Control System Design, An Introduction to State-Space Methods Bernard Friedland https://books.google.co.in/books/about/Control_System_Design.html?id=9WRKZlaCnF8C&redir_esc=y
   * LINEAR OBSERVERS
+* Videos:
+  * Motivation for Full-State Estimation, Steve Brunton https://youtu.be/LTNMf8X21cY
 
 ## Lecture 11 Controllability, Observability
 
