@@ -22,7 +22,7 @@ This repository contains regularly updated course materials. You can use lecture
 ([playlist](https://www.youtube.com/watch?v=yxns2JKQK0M&list=PLlxR_sEKjSpRACHIQZcKNm-KjNQWlAltM&ab_channel=SergeiS))
 
 * Lecture 1 (State Space) - https://youtu.be/yxns2JKQK0M
-* Lecture 2 (Stability) - 
+* Lecture 2 (Stability) - https://youtu.be/XnNlYsVebkU
 * Lecture 3 (Laplace, Transfer functions) - 
 * Lecture 4 (Bode) - 
 * Lecture 5 (Stabilizing control) - 
@@ -82,36 +82,37 @@ Consider adding \*.pdf to the .git/info/exclude file on your local repo. Here is
 * Control Systems Engineering Norman S. Nise 
   * Chapter 3.3: The General State-Space Representation 
   * Chapter 3.4: Applying the State-Space Representation
-* Systems of First Order Linear Differential Equations. 
-[Download](http://www.personal.psu.edu/sxt104/class/Math251/Notes-LinearSystems.pdf)
-* Control theory by S. Simrock - sections 1, 3:
-https://cds.cern.ch/record/1100534/files/p73.pdf
+* Systems of First Order Linear Differential Equations. [Download](http://www.personal.psu.edu/sxt104/class/Math251/Notes-LinearSystems.pdf)
 
 
 ## Lecture 2. Stability
 
-* State Space Stability (Linear Systems Theory EECS 221a, Berkeley) - https://youtu.be/7GarcEQ0uk8
+* Control System Design, An Introduction to State-Space Methods Bernard Friedland https://books.google.co.in/books/about/Control_System_Design.html?id=9WRKZlaCnF8C&redir_esc=y
+  * 4.4 STABILITY
 * Control Systems Engineering Norman S. Nise (chapters 3.3, 3.4)
-* Paul's Online Notes (systems of linear ODE, solutions for them):
-http://tutorial.math.lamar.edu/Classes/DE/SystemsDE.aspx
-http://tutorial.math.lamar.edu/Classes/DE/SolutionsToSystems.aspx
+* Paul's Online Notes (systems of linear ODE, solutions for them): 
+  * http://tutorial.math.lamar.edu/Classes/DE/SystemsDE.aspx
+  * http://tutorial.math.lamar.edu/Classes/DE/SolutionsToSystems.aspx
 * Astolfi, A., 2006. Systems and Control Theory: An Introduction. Imperial College London lecture notes. - 2.3.1 Linear systems (on equilibrioum of linear systems):
 http://www3.imperial.ac.uk/pls/portallive/docs/1/31851696.PDF
-
+* Videos:
+  * State Space Stability (Linear Systems Theory EECS 221a, Berkeley) - https://youtu.be/7GarcEQ0uk8
 
 ## Lecture 3. Transfer functions
 
-* Control Systems Lectures - Transfer Functions, by Brian Douglas: https://youtu.be/RJleGwXorUk
-* The Laplace Transform - A Graphical Approach, by Brian Douglas: https://youtu.be/ZGPtPkTft8g
+* Control System Design, An Introduction to State-Space Methods Bernard Friedland https://books.google.co.in/books/about/Control_System_Design.html?id=9WRKZlaCnF8C&redir_esc=y
+  * 3.4 SOLUTION BY THE LAPLACE TRANSFORM: THE RESOLVENT
+  * 3.5 INPUT-OUTPUT RELATIONS: TRANSFER FUNCTIONS
 * Control Systems Engineering, by Norman S. Nise 
   * chapter 2.2 Laplace Transform Review
   * chapter 2.3 The Transfer Function (optional)
 * Cho W. S. To, Introduction to Dynamics and Control in Mechanical Engineering Systems. 
   * 2 Review of Laplace Transforms 
   * 8.3 Transfer Functions
-* Control theory by S. Simrock - sections 2, 3 and 4:
-https://cds.cern.ch/record/1100534/files/p73.pdf
-
+* Control theory by S. Simrock - sections 2, 3 and 4: https://cds.cern.ch/record/1100534/files/p73.pdf
+* Videos:
+  * Control Systems Lectures - Transfer Functions, Brian Douglas: https://youtu.be/RJleGwXorUk
+  * The Laplace Transform - A Graphical Approach, Brian Douglas: https://youtu.be/ZGPtPkTft8g
 
 ## Lecture 4. Frequency response, Bode plot
 
@@ -129,8 +130,11 @@ https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-30-feedback-control-
 * Chapter 6 State Feedback - http://www.cds.caltech.edu/~murray/books/AM05/pdf/am06-statefbk_16Sep06.pdf
 
 ## Lecture 6. Discrete Systems
-  * Control theory by S. Simrock - section 7 (goes to z-transform, which is outside the scope of our course)
-https://cds.cern.ch/record/1100534/files/p73.pdf
+* Control System Design, An Introduction to State-Space Methods Bernard Friedland https://books.google.co.in/books/about/Control_System_Design.html?id=9WRKZlaCnF8C&redir_esc=y
+  * 3.1 DIFFERENTIAL EQUATIONS REVISITED 
+  * 3.2 SOLUTION OF LINEAR DIFFERENTIAL EQUATIONS IN STATE-SPACE FORM
+* MIT 2.14, State Space response https://web.mit.edu/2.14/www/Handouts/StateSpaceResponse.pdf
+  * 2 State-Variable Response of Linear Systems
 * Astolfi, A., 2006. Systems and Control Theory: An Introduction. Imperial College London lecture notes:
   * 1.2.9 Approximate discrete-time models;
   * Proposition 2.3 (Trajectories of linear, discrete-time, systems) - on Controllability:
@@ -147,11 +151,23 @@ https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-241j-d
 
 ## Lecture 10 Observers
 
+* Control System Design, An Introduction to State-Space Methods Bernard Friedland https://books.google.co.in/books/about/Control_System_Design.html?id=9WRKZlaCnF8C&redir_esc=y
+  * LINEAR OBSERVERS
+
 ## Lecture 11 Controllability, Observability
 
-* MIT 2.14, State Space response https://web.mit.edu/2.14/www/Handouts/StateSpaceResponse.pdf
+* Control System Design, An Introduction to State-Space Methods Bernard Friedland https://books.google.co.in/books/about/Control_System_Design.html?id=9WRKZlaCnF8C&redir_esc=y
+  * 5.4 ALGEBRAIC CONDITIONS FOR CONTROLLABILITY AND OBSERVABILITY
 * Invariant subspaces, Sylvester equation, PBH https://stanford.edu/class/ee363/sessions/s2notes.pdf
 * EE363 Winter 2008-09 Lecture 6 Invariant subspaces https://web.stanford.edu/class/ee363/lectures/inv-sub.pdf
+* Videos:
+  * Degrees of Controllability and Gramians, Steve Brunton -  https://youtu.be/ZNHx62HbKNA
+  * Controllability and the PBH Test, Steve Brunton - https://youtu.be/0XJHgLrcPeA
+
+## Observer Design, Kalman Filter
+* Control System Design, An Introduction to State-Space Methods Bernard Friedland https://books.google.co.in/books/about/Control_System_Design.html?id=9WRKZlaCnF8C&redir_esc=y
+  * RANDOM PROCESSES
+  * KALMAN FILTERS: OPTIMUM OBSERVERS 
 
 ## Other
 
@@ -162,18 +178,6 @@ https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-241j-d
 ### Optimal Control of LTI systems
  * Underactuated Robotics. Continuous dynamic programming.
    [Link](http://underactuated.csail.mit.edu/dp.html#section3)
- * Underactuated Robotics. Linear Quadratic Regulators
-   [Link](http://underactuated.csail.mit.edu/lqr.html)
  * Control theory by S. Simrock - section 8:
 https://cds.cern.ch/record/1100534/files/p73.pdf
 
-### Noise, Information, Observation
-  * For statistical prerequisites, see Mathematics for Machine Learning: PCA, Week 1: https://www.coursera.org/learn/pca-machine-learning.
-
-### Observer Design, Kalman Filter
-  * Control theory by S. Simrock - section 8.1:
-https://cds.cern.ch/record/1100534/files/p73.pdf
-
-### Parameter estimation
-  * Control theory by S. Simrock - section 9:
-https://cds.cern.ch/record/1100534/files/p73.pdf
