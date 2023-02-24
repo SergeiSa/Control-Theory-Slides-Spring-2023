@@ -6,10 +6,10 @@ This repository contains regularly updated course materials. You can use lecture
 
 * Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Introduction
 * Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Stability
-* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Control
-* 
+* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Contro
 * Lecture 4 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Laplace
 * Lecture 5 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Bode
+
 * Lecture 6 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/Discrete
 * Lecture 7 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/LyapunovTheory
 * Lecture 8 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2023/tree/main/Slides/HJB_LQR
@@ -24,9 +24,9 @@ This repository contains regularly updated course materials. You can use lecture
 
 * Lecture 1 (State Space) - https://youtu.be/yxns2JKQK0M
 * Lecture 2 (Stability) - https://youtu.be/XnNlYsVebkU
-* Lecture 3 (Stabilizing control) - 
-* Lecture 4 (Laplace, Transfer functions) - 
-* Lecture 5 (Bode) - 
+* Lecture 3 (Stabilizing control) - https://youtu.be/wV1iPkvXVV4
+* Lecture 4 (Laplace, Transfer functions) - https://youtu.be/8LMwvjSmt28
+* Lecture 5 (Bode) - https://youtu.be/d-R31Hmmrtk
 * Lecture 6 (Discrete) - 
 * Lecture 7 (Lyapunov) - 
 * Lecture 9 (LQR, Riccati) - 
