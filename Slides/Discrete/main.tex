@@ -232,14 +232,202 @@ General stability criterion is given below:
 In general, discrete systems $\bo{x}_{i+1} = \bo{A}\bo{x}_i$ are stable as long as the eigenvalues of $\bo{A}$ are smaller than 1 by absolute value: $|\lambda_i(\bo{A})| \leq 1, \; \forall i$. This is true for complex eigenvalues as well.
 \end{block}
 
-
 \end{flushleft}
 \end{frame}
 
 
 
-\begin{frame}{Discretization}
-\framesubtitle{Finite difference}
+\begin{frame}
+	
+	\centering{\huge Analytical solution to an ODE}
+	
+\end{frame}
+
+
+
+
+
+\begin{frame}{Matrix exponential}
+	% \framesubtitle{Limited control}
+	\begin{flushleft}
+		
+		Exponential $e^a$ is defined as a series:
+		
+		\begin{equation}
+			e^a =1+a+\frac{1}{2} a^2
+			+\frac{1}{6} a^3 + ... = \sum_{n=0}^{\infty} \frac{1}{n!} a^n
+		\end{equation}
+		
+		Matrix exponential $e^\bo{A}$ is defined as a series:
+		
+		\begin{equation}
+			e^\bo{A} = \bo{I}+\bo{A}+\frac{1}{2} \bo{A}\bo{A}
+			+\frac{1}{6} \bo{A}\bo{A}\bo{A} + ... = \sum_{n=0}^{\infty} \frac{1}{n!} \bo{A}^n
+		\end{equation}
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Analytical solution to ODE}
+	% \framesubtitle{Limited control}
+	\begin{flushleft}
+		
+		An ODE of the form $\dot x = a x$ has analytical solution $x(t) = e^{at} x(0)$.
+		
+		\bigskip
+		
+		An ODE of the form $\dot{\bo{x}} = \bo{A}  \bo{x}$ has analytical solution $\bo{x}(t) = e^{\bo{A}t}  \bo{x}(0)$.
+		
+		\bigskip
+		
+		Let us check that this is a solution:
+		
+		\begin{align}
+			\bo{x}(t) &= \left( \bo{I}+\bo{A}t+\frac{1}{2} \bo{A}\bo{A}t^2
+			+\frac{1}{6} \bo{A}\bo{A}\bo{A}t^3 + ... \right)  \bo{x}(0) &
+			\\
+			\dot{\bo{x}}(t) &= \left( \bo{A}+\bo{A}\bo{A}t
+			+\frac{1}{2}\bo{A}\bo{A}\bo{A}t^2 + ... \right)  \bo{x}(0) 	&		
+			\\
+			\dot{\bo{x}}(t) &= \bo{A} \left(\bo{I} +\bo{A}t
+			+\frac{1}{2}\bo{A}\bo{A}t^2 + ... \right)  \bo{x}(0) 	&		
+			\\
+			\dot{\bo{x}}(t) &= \bo{A} e^{\bo{A}t}  \bo{x}(0) 	&		 			
+			\\
+			\dot{\bo{x}}(t) &= \bo{A} \bo{x}(t)  &\ \ \qed
+		\end{align}
+		
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Forced State Response (LTI) (1)}
+	% \framesubtitle{Limited control}
+	\begin{flushleft}
+		
+		An ODE of the form $\dot x = a x + bu(t)$ also has analytical solution. To find it, we first find the following derivative:
+		%
+		\begin{equation}
+			\frac{d}{dt} \left( e^{-at} x(t) \right) = e^{-at} \dot x(t) - a e^{-at} x(t)
+		\end{equation}
+		
+		Multiplying $\dot x = a x + bu(t)$ by $e^{-at}$ we see:
+		
+		\begin{align}
+			e^{-at} \dot x = e^{-at} a x + e^{-at} bu(t)
+			\\
+			e^{-at} \dot x -  e^{-at} a x= e^{-at} bu(t)
+			\\
+			\frac{d}{dt} \left( e^{-at} x(t) \right) = e^{-at} bu(t)
+			\\
+			\int_{0}^{t} \frac{d}{d\tau} \left( e^{-a\tau} x(\tau) \right) d\tau = 	\int_{0}^{t}  e^{-a\tau} bu(\tau) d\tau
+		\end{align}
+		
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Forced State Response (LTI) (2)}
+	% \framesubtitle{Limited control}
+	\begin{flushleft}
+		
+		Continuing the derivation:
+		
+		\begin{align}
+			\int_{0}^{t} \frac{d}{d\tau} \left( e^{-a\tau} x(\tau) \right) d\tau = 	\int_{0}^{t}  e^{-a\tau} bu(\tau) d\tau
+			\\
+			e^{-at} x(t) - x(0) = \int_{0}^{t}  e^{-a\tau} bu(\tau) d\tau
+			\\
+			x(t) = e^{at} x(0) + e^{at} \int_{0}^{t}  e^{-a\tau} bu(\tau) d\tau
+			\\
+			x(t) = e^{at} x(0) + \int_{0}^{t}  e^{a(t-\tau)} bu(\tau) d\tau
+		\end{align}
+		
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Forced State Response (LTI) (3)}
+	% \framesubtitle{Limited control}
+	\begin{flushleft}
+		
+		State-space equation $\dot{\bo{x}} = \bo{A}  \bo{x} + \bo{B}  \bo{u}(t)$ also has an analytical solution:
+		
+		\begin{equation}
+			\bo{x}(t) = e^{\bo{A}t}  \bo{x}(0) + 
+			\int_{0}^{t} e^{\bo{A}(t-\tau)} \bo{B}  \bo{u}(\tau) d\tau
+		\end{equation}
+		
+		The same can be re-written as:
+		
+		\begin{equation}
+			\bo{x}(t) = e^{\bo{A}t}  \bo{x}(0) + 
+			e^{\bo{A}t} \int_{0}^{t} e^{-\bo{A}\tau} \bo{B}  \bo{u}(\tau) d\tau
+		\end{equation}
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+	
+		\centering{\huge Discretization}
+	
+\end{frame}
+
+
+
+
+
+\begin{frame}{From analytical solution to discrete dynamics}
+	% \framesubtitle{Limited control}
+	\begin{flushleft}
+		Given a solution to a state-space system we can consider how the system evolves from the point $t=0$ to the point $t=\Delta t$, assuming that $\bo{u}(t) = \bo{u}_0 = \text{const}, \ t \in [ 0, \ \Delta t ]$, and denoting $\bo{x}(0) = \bo{x}_0$ and $\bo{x}(\Delta t) = \bo{x}_1$:
+		
+		\begin{equation}
+			\bo{x}_1 = e^{\bo{A}\Delta t}  \bo{x}_0 + 
+			e^{\bo{A} \Delta t} \int_{0}^{\Delta t} e^{-\bo{A}\tau} \bo{B}  \bo{u}_0 d\tau
+		\end{equation}
+		
+		Now we denote:
+		%
+		\begin{align}
+			\bar{\bo{A}} = e^{\bo{A}\Delta t}, \ \ \
+			\bar{\bo{B}} = e^{\bo{A} \Delta t} \int_{0}^{\Delta t} e^{-\bo{A}\tau} \bo{B} d\tau
+		\end{align}
+	
+		We get:
+		%
+		\begin{equation}
+			\bo{x}_1 = \bar{\bo{A}}  \bo{x}_0 + \bar{\bo{B}}  \bo{u}_0
+		\end{equation}		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Discretization via finite differences}
+%\framesubtitle{Finite difference}
 \begin{flushleft}
 
 Consider linear time-invariant autonomous system:
@@ -273,8 +461,8 @@ or
 
 
 
-\begin{frame}{Discretization}
-\framesubtitle{Finite difference notation}
+\begin{frame}{Zero-order hold (1)}
+%\framesubtitle{Finite difference notation}
 \begin{flushleft}
 We can introduce notation:
 
@@ -299,8 +487,8 @@ We say that $\bo{x}_i$ is the value of $\bo{x}$ at the time step $i$. Then the f
 
 
 
-\begin{frame}{Discretization}
-\framesubtitle{Finite difference in an autonomous LTI}
+\begin{frame}{Zero-order hold (2)}
+%\framesubtitle{Finite difference in an autonomous LTI}
 \begin{flushleft}
 
 We can rewrite our original autonomous LTI as follows:
@@ -331,8 +519,8 @@ Isolating $\bo{x}_{i + 1}$ on the left hand side, we get:
 
 
 
-\begin{frame}{Discretization}
-\framesubtitle{Zero order hold}
+\begin{frame}{Zero-order hold (3)}
+%\framesubtitle{Zero order hold}
 \begin{flushleft}
 
 Defining \emph{discrete state space matrix} $\bar{\bo{A}}$ and \emph{discrete control matrix} $\bar{\bo{B}}$ as follows:
@@ -356,8 +544,8 @@ This way of defining discrete dynamics is called \emph{zero order hold (ZOH)}.
 \end{frame}
 
 
-\begin{frame}{ZOH and other types of discretization}
-\framesubtitle{Zero order hold vs First order hold}
+\begin{frame}{Zero-order hold (4)}
+%\framesubtitle{Zero order hold vs First order hold}
 \begin{flushleft}
 
 Graphically, we can understand what zero order hold is, by comparing it to the first order hold:
@@ -373,32 +561,29 @@ Graphically, we can understand what zero order hold is, by comparing it to the f
 \end{frame}
 
 
-\begin{frame}{ZOH and other types of discretization}
-\framesubtitle{Exact discretization}
-\begin{flushleft}
-
-Let the discrete state $\bo{x}_i$ correspond to continuous state $\bo{x}$ at the moment of time $t_i$. Then, we can say that the discretization is \emph{exact} the following holds for any solution $\bo{x}(t)$
-
-\begin{equation}
-\bo{x}_0 = \bo{x}(t_0) \rightarrow 
-\bo{x}_i = \bo{x}(t_i), \ \forall i
-\end{equation}
-
-We can compute the exact discretization as follows:
-
-\begin{equation}
-\bar{\bo{A}} = e^{\bo{A} \Delta t}
-\end{equation}
-\begin{equation}
-\bar{\bo{B}} = \bo{B} \int_{t_0}^{t_0 + \Delta t} e^{\bo{A} s} ds
-\end{equation}
-
-
-\end{flushleft}
-\end{frame}
-
-
-
+%\begin{frame}{ZOH and other types of discretization}
+%\framesubtitle{Exact discretization}
+%\begin{flushleft}
+%
+%Let the discrete state $\bo{x}_i$ correspond to continuous state $\bo{x}$ at the moment of time $t_i$. Then, we can say that the discretization is \emph{exact} the following holds for any solution $\bo{x}(t)$
+%
+%\begin{equation}
+%\bo{x}_0 = \bo{x}(t_0) \rightarrow 
+%\bo{x}_i = \bo{x}(t_i), \ \forall i
+%\end{equation}
+%
+%We can compute the exact discretization as follows:
+%
+%\begin{equation}
+%\bar{\bo{A}} = e^{\bo{A} \Delta t}
+%\end{equation}
+%\begin{equation}
+%\bar{\bo{B}} = \bo{B} \int_{t_0}^{t_0 + \Delta t} e^{\bo{A} s} ds
+%\end{equation}
+%
+%
+%\end{flushleft}
+%\end{frame}
 
 
 
@@ -413,6 +598,7 @@ We can compute the exact discretization as follows:
 \begin{itemize}
 \item  \bref{http://cse.lab.imtlucca.it/~bemporad/teaching/ac/pdf/04a-TD_sys.pdf}{Automatic Control 1 Discrete-time linear systems}, Prof. Alberto Bemporad, University of Trento
 
+\item \bref{https://web.mit.edu/2.14/www/Handouts/StateSpaceResponse.pdf}{MIT 2.14, State Space Response}
 
 \end{itemize}
 

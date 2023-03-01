@@ -4,7 +4,7 @@
 
 
 \title{Frequency response, Bode}
-\subtitle{Control Theory, Lecture 4}
+\subtitle{Control Theory, Lecture 5}
 \author{by Sergei Savin}
 \centering
 \date{\mydate}
@@ -24,17 +24,104 @@
 \item Bode plot - example
 \item Stability margins
 \item Code example
-% \item Stability of autonomous LTI
-%     \begin{itemize}
-%     \item Example: real eigenvalues
-%     \item Example: complex eigenvalues
-%     \item General case
-%     \item Illustration
-%     \end{itemize}
-% \item Read more
 \end{itemize}
 
 \end{frame}
+
+
+
+\begin{frame}{Frequency response}
+	% \framesubtitle{O}
+	\begin{flushleft}
+		
+		\begin{block}{Frequency response}
+			Frequency response is a steady-state output of the system, given sinusoidal input.
+		\end{block}
+	
+		\bigskip
+	
+		Consider a system $Y(s) = G(s)U(s)$. Sinusoidal input $u(t) = \text{sin}(\omega t)$ in time domain translates to $U(s) = \frac{\omega}{\omega^2 + s^2}$ in Laplace domain. So, siven a sinusoidal input, the system becomes:
+		
+		\begin{equation}
+			Y(s) = G(s)\frac{\omega}{\omega^2 + s^2}
+		\end{equation}
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Fraction expansion}
+	% \framesubtitle{O}
+	\begin{flushleft}
+		
+		If a transfer function $G(s)$ is a rational fraction, it can be represented as:
+		
+		\begin{equation}
+			G(s) = \frac{n(s)}{(s + p_1)(s + p_2) \ ... \ (s + p_n)}
+		\end{equation}		
+	
+		where $p_i$ are the roots on the denominator - called \emph{poles} of the transfer function.
+		
+		\bigskip
+		
+		In many cases (for example when $p_i$ are real and non-repeating), the fraction can be expanded:
+		
+		\begin{equation*}
+			G(s) = \frac{n(s)}{(s + p_1)(s + p_2) \ ... \ (s + p_n)} = \frac{r_1}{s + p_1} + \frac{r_2}{s + p_2} + ... + \frac{r_n}{s + p_n}
+		\end{equation*}		
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Fraction expansion}
+	% \framesubtitle{O}
+	\begin{flushleft}
+		
+		We can expand the function $Y(s) = G(s)\frac{\omega}{\omega^2 + s^2}$ in a similar way:
+		
+		\begin{equation*}
+			Y(s) = \frac{r_1}{s + p_1} + \frac{r_2}{s + p_2} + ... + \frac{r_n}{s + p_n} + \frac{\alpha}{s + j\omega} + \frac{\beta}{s - j\omega}
+		\end{equation*}		
+	
+		Laplace function of the form $\frac{r_i}{s + p_i}$ corresponds to the following time function:
+		
+		\begin{align}
+			y(t) = r_i e^{-p_i t}
+		\end{align} 
+	
+		So, for a stable transfer function as time goes to infinity, $r_i e^{-p_i t}$ goes to zero. The only components of the function $Y(s)$ that do not disappear are the last two: $\frac{\alpha}{s + j\omega} + \frac{\beta}{s - j\omega}$.
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Fraction expansion}
+	% \framesubtitle{O}
+	\begin{flushleft}
+		
+		One can show that constants in the expansion $\frac{\alpha}{s + j\omega} + \frac{\beta}{s - j\omega}$ can be found in the form:
+		
+		\begin{align}
+			\alpha = -G(j\omega) g
+			\\
+			\beta = G(-j\omega) g
+		\end{align}
+	
+		\bigskip
+	
+		In fact, the analysis of the frequency response will involve analyzing the transfer function $G(j\omega)$.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
 
 
 
@@ -227,16 +314,7 @@ Check the colab notebook based on the example above for an illustration of how t
 
 
 
-\begin{frame}{Thank you!}
-\centerline{Lecture slides are available via Moodle.}
-\bigskip
-\centerline{You can help improve these slides at:}
-\centerline{\mygit}
-\bigskip
-\centerline{Check Moodle for additional links, videos, textbook suggestions.}
-\bigskip
 
-\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
-\end{frame}
+\myqrframe
 
 \end{document}
