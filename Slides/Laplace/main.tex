@@ -210,8 +210,8 @@ The transfer function for it looks: $Y(s) = \frac{1}{2 s^3 + 4} U(s)$
 
 
 
-\begin{frame}{Transfer Functions}
-\framesubtitle{Interesting things done easy}
+\begin{frame}{Transfer Functions, 1}
+%\framesubtitle{Interesting things done easy}
 \begin{flushleft}
 
 Consider the following (strange) ODE:
@@ -240,6 +240,29 @@ Y(s) = \frac{10s - 1}{2s^2 + 3s + 2} U(s)
 
 \end{flushleft}
 \end{frame}
+
+
+
+
+\begin{frame}{Transfer Functions, 2}
+%	\framesubtitle{Interesting things done easy}
+	\begin{flushleft}
+		
+		Consider the control law:
+		
+		\begin{equation}
+			u = -k_p y - k_d \dot y
+		\end{equation}
+		
+		Transfer function representation of this control law is:
+		%
+		\begin{equation}
+			U(s) = -(k_d s + k_p) Y(s)
+		\end{equation}
+		
+	\end{flushleft}
+\end{frame}
+
 
 
 
@@ -284,7 +307,7 @@ and finally, express $\bo{y}$ out:
 
 
 
-\begin{frame}{System}
+\begin{frame}{System - open-loop}
 	%	\framesubtitle{Interesting things done easy}
 	\begin{flushleft}
 		
@@ -308,6 +331,124 @@ and finally, express $\bo{y}$ out:
 
 
 
+\begin{frame}{Closed-loop, 1}
+	%	\framesubtitle{Interesting things done easy}
+	\begin{flushleft}
+		
+		Open-loop system representation is $Y(s)  = G(s) U(s)$. Let us propose control law (in time domain):
+		
+		\begin{equation}
+			u(t) = k_p (v(t) - y(t)) + k_d (\dot v(t) - \dot y(t))
+		\end{equation}
+	
+		where $v(t)$ is a control reference. Laplace transform of this control law takes form:
+		
+		\begin{equation}
+			U(s) = (k_p + k_d s) (V(s) - Y(s))
+		\end{equation}
+		
+		Defining $H(s) = k_p + k_d s$ we find closed loop system takes form:
+		%
+		\begin{align}
+			Y(s)  &= G(s) H(s) (V(s) - Y(s)) \\
+			Y(s)  &= -G(s) H(s) Y(s) + G(s) H(s)V(s) \\
+		    (1 + G(s) H(s)) Y(s) &=  G(s) H(s)V(s) \\
+		    Y(s) &= \frac{G(s) H(s)}{1 + G(s) H(s)} V(s)
+		\end{align}
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Closed-loop, 2}
+	%	\framesubtitle{Interesting things done easy}
+	\begin{flushleft}
+		
+		Alternatively, we can define a new reference signal $r(t)$:
+		%
+		\begin{equation}
+			r(t) = k_p v(t) + k_d \dot v(t)
+		\end{equation}
+		
+		Control law then takes form:
+		%
+		\begin{equation}
+			u(t) = -k_p y(t) - k_d \dot y(t) + r(t)
+		\end{equation}
+		
+		Laplace transform of the control law takes form:
+		%
+		\begin{equation}
+			U(s) = -H(s)Y(s) + R(s)
+		\end{equation}
+		
+		The closed loop system takes form:
+		%
+		\begin{align}
+			Y(s)  &= -G(s) H(s)Y(s) + G(s)R(s) \\
+			Y(s) + G(s) H(s)Y(s)  &=  G(s)R(s)\\
+			Y(s)  &= \frac{G(s)}{1 + G(s) H(s)} R(s) 
+		\end{align}
+		
+		
+	\end{flushleft}
+\end{frame}
+
+%\begin{frame}{Transfer Function and Control (1)}
+%	% \framesubtitle{O}
+%	\begin{flushleft}
+%		
+%		Let the dynamic system be described as a transfer function:
+%		
+%		\begin{equation}
+%			Y(s) = G(s) U(s)
+%		\end{equation}
+%		
+%		We can try to modify the input based on how the output looks. Since we always do it in a linear way, we can write it as:
+%		
+%		\begin{align}
+%			Y(s) = G(s) (U(s) - H(s) Y(s)) 
+%		\end{align}
+%		
+%		where $H(s) y$ is called \emph{feedback}.
+%		
+%		\bigskip
+%		
+%		How would the transfer function from $U(s)$ to $Y(s) $ look like? 
+%		
+%	\end{flushleft}
+%\end{frame}
+
+
+%\begin{frame}{Closed-loop, 3}
+%	% \framesubtitle{O}
+%	\begin{flushleft}
+%		
+%		From $Y(s)  = G(s) (U(s)  - H(s) Y(s) )$ we go:
+%		
+%		\begin{equation}
+%			Y(s)  = G(s)U(s) - G(s)H(s) Y(s) 
+%		\end{equation}
+%		\begin{equation}
+%			Y(s)  + G(s)H(s) Y(s)  = G(s)U(s)
+%		\end{equation}
+%		\begin{equation}
+%			Y(s)  = \frac{G(s)}{1 + G(s)H(s)} U(s)
+%		\end{equation}
+%		
+%		Thus, we found \emph{closed-loop} transfer function:
+%		
+%		\begin{equation}
+%			W(s) = \frac{G(s)}{1 + G(s)H(s)}
+%		\end{equation}
+%		
+%	\end{flushleft}
+%\end{frame}
+
+
+
 
 \begin{frame}{Steady-State gain}
 	%	\framesubtitle{Interesting things done easy}
@@ -320,7 +461,7 @@ and finally, express $\bo{y}$ out:
 		\begin{equation}
 			Y(s) = \frac{b_m s^m + ... + b_1}{a_n s^n + ... + a_1} U(s)
 		\end{equation}
-	
+		
 		Then, as any element multiplied by the differential operator $s$ with power higher than 0 is a derivative of $u$ or $y$ and both are 0 at the steady-state solution, the steady-state gain can be found by setting those to zero:
 		
 		\begin{equation}
@@ -331,60 +472,6 @@ and finally, express $\bo{y}$ out:
 		
 	\end{flushleft}
 \end{frame}
-
-
-
-\begin{frame}{Transfer Function and Control (1)}
-	% \framesubtitle{O}
-	\begin{flushleft}
-		
-		Let the dynamic system be described as a transfer function:
-		
-		\begin{equation}
-			Y(s) = G(s) U(s)
-		\end{equation}
-		
-		We can try to modify the input based on how the output looks. Since we always do it in a linear way, we can write it as:
-		
-		\begin{align}
-			Y(s) = G(s) (U(s) - H(s) Y(s)) 
-		\end{align}
-		
-		where $H(s) y$ is called \emph{feedback}.
-		
-		\bigskip
-		
-		How would the transfer function from $U(s)$ to $Y(s) $ look like? 
-		
-	\end{flushleft}
-\end{frame}
-
-
-\begin{frame}{Transfer Function and Control (2)}
-	% \framesubtitle{O}
-	\begin{flushleft}
-		
-		From $Y(s)  = G(s) (U(s)  - H(s) Y(s) )$ we go:
-		
-		\begin{equation}
-			Y(s)  = G(s)U(s) - G(s)H(s) Y(s) 
-		\end{equation}
-		\begin{equation}
-			Y(s)  + G(s)H(s) Y(s)  = G(s)U(s)
-		\end{equation}
-		\begin{equation}
-			Y(s)  = \frac{G(s)}{1 + G(s)H(s)} U(s)
-		\end{equation}
-		
-		Thus, we found \emph{closed-loop} transfer function:
-		
-		\begin{equation}
-			W(s) = \frac{G(s)}{1 + G(s)H(s)}
-		\end{equation}
-		
-	\end{flushleft}
-\end{frame}
-
 
 
 \begin{frame}{Read more}

@@ -4,7 +4,7 @@
 
 
 \title{Hamilton-Jacobi-Bellman eq., Riccati eq., Linear Quadratic Regulator}
-\subtitle{Control Theory, Lecture 9}
+\subtitle{Control Theory, Lecture 7}
 \author{by Sergei Savin}
 \centering
 \date{\mydate}
@@ -317,6 +317,8 @@ This is the \emph{Algebraic Riccati equation}.
 \end{flushleft}
 \end{frame}
 
+
+
 \begin{frame}{Algebraic Riccati}
 \framesubtitle{Numerical methods}
 \begin{flushleft}
@@ -328,7 +330,7 @@ There are a number of ways to solve LQR:
 \begin{itemize}
     \item In MATLAB there is a function \texttt{[K,S,P] = lqr(A,B,Q,R), where P=eig(A-B*K)}
     \item In Python, there is \texttt{S = scipy.linalg.solve\_continuous\_are(A,B,Q,R)}
-    \item In Drake (by MIT and Toyota Research) there is a function \texttt{(K,S) = LinearQuadraticRegulator(A,B,Q,R)}
+    \item In Drake there is a function \texttt{(K,S) = LinearQuadraticRegulator(A,B,Q,R)}
 \end{itemize}
 
 \end{flushleft}
@@ -336,17 +338,25 @@ There are a number of ways to solve LQR:
 
 
 
-
-\begin{frame}{Thank you!}
-	\centerline{Lecture slides are available via Moodle.}
-	\bigskip
-	\centerline{You can help improve these slides at:}
-	\centerline{\mygit}
-	\bigskip
-	\centerline{Check Moodle for additional links, videos, textbook suggestions.}
-	\bigskip
-	
-	\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
+\begin{frame}{LQR and pole placement}
+%	\framesubtitle{Numerical methods}
+	\begin{flushleft}
+		
+		\begin{itemize}
+			\item Pole placement \textcolor{mydarkgreen}{upsides}: allows to design exactly how fast the control error decays to zero; allows to design control error oscillations.
+			
+			\item Pole placement \textcolor{red}{downsides}: may require unreasonably high control gains. Easy to ask for "unreasonable" performance.
+			
+			\item LQR \textcolor{mydarkgreen}{upsides}: easy to produce "reasonable" control gains.
+			
+			\item LQR \textcolor{red}{downsides}: may produce very slow decaying control error with oscillations.
+		\end{itemize}
+		
+		
+	\end{flushleft}
 \end{frame}
+
+
+\myqrframe
 
 \end{document}
