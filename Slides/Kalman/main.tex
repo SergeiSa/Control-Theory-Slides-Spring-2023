@@ -4,7 +4,7 @@
 
 
 \title{Kalman Filter}
-\subtitle{Control Theory, Lecture 10}
+\subtitle{Control Theory, Lecture 12}
 \author{by Sergei Savin}
 \centering
 \date{\mydate}
@@ -74,7 +74,7 @@ Mean has a number of properties:
 		To simplify notation in the following sections, we define $\textbf{cov}(\bo{v}) = \textbf{cov}(\bo{v}, \bo{v})$. For zero-mean process $E[\bo{v}] = 0$ the formula simplifies:
 		
 		\begin{equation}
-			\textbf{cov}(\bo{v}) = E[(\bo{v})(\bo{v})\T]
+			\textbf{cov}(\bo{v}) = E[\bo{v}\bo{v}\T]
 		\end{equation}
 		
 		Autocovariance has a number of properties:
@@ -105,8 +105,6 @@ Mean has a number of properties:
 			\bo{x} \sim \mathcal{N} (\bar{\bo{x}}, \bo{X})
 		\end{equation}
 	
-		Let $\bo{x}$ be a random variable $\bo{x} \sim \mathcal{N} (\bar{\bo{x}}, \bo{X})$. 
-		
 		
 	\end{flushleft}
 \end{frame}
@@ -118,7 +116,7 @@ Mean has a number of properties:
 	%\framesubtitle{How do we know the state?}
 	\begin{flushleft}
 		
-		Given a constant matrix $\bo{M}$ we can define an affine transformation of $\bo{x}$:
+		Let $\bo{x}$ be a random variable $\bo{x} \sim \mathcal{N} (\bar{\bo{x}}, \bo{X})$.  Given a constant matrix $\bo{M}$ we can define an affine transformation of $\bo{x}$:
 		
 		\begin{equation}
 			\bo{y} = \bo{M}\bo{x}
@@ -327,20 +325,35 @@ Mean has a number of properties:
 		We can propose the following modification to the observer:
 		
 		\begin{equation}
+			\label{eq:observer}
 			\begin{cases}
 				\bhat{x}_{i+1}^- = \bo{A} \bhat{x}_i + \bo{B} \bo{u}_i, \\
 				\bhat{x}_{i+1} = \bhat{x}_{i+1}^- + \bo{L}_i (\bo{y}_i - \bo{H} \bhat{x}_{i+1}^-)
 			\end{cases}
 		\end{equation}
 		
-		where $\bhat{x}_{i+1}^-$ is an \emph{a priori} estimate. We can re-write all this in terms of state estimation error, defining $\btil{x}_{i+1}^- = \bo{x}_{i+1} - \bhat{x}_{i+1}^-$:
+		where $\bhat{x}_{i+1}^-$ is an \emph{a priori} estimate. \textcolor{mygray2}{We can re-write the last equation as 
+			$\bhat{x}_{i+1} = \bhat{x}_{i+1}^- + \bo{L}_i (\bo{H} \bo{x}_i - \bo{H} \bhat{x}_{i+1}^- + \bo{v}_i) $.} 
+		
+		\bigskip
+		
+		We can re-write all this in terms of state estimation error, defining $\btil{x}_{i+1}^- = \bo{x}_{i+1} - \bhat{x}_{i+1}^-$. For the last eq. in \eqref{eq:observer}, we subtract $\bo{x}_{i+1}$ from both sides:
+		%
+		\begin{equation}
+		\bhat{x}_{i+1}-\bo{x}_{i+1} = \bhat{x}_{i+1}^- - \bo{x}_{i+1} + 
+		\bo{L}_i (\bo{H} \bo{x}_i - \bo{H} \bhat{x}_{i+1}^- + \bo{v}_i) 
+		\end{equation}				
+		%
+		 and flip the sign:
 		
 		\begin{equation}
 	\begin{cases}
 		\btil{x}_{i+1}^- = \bo{A} \btil{x}_i + \bo{w}_i, \\
-		\btil{x}_{i+1} = \btil{x}_{i+1}^- - \bo{L}_i \bo{H} \btil{x}_{i+1}^- + \bo{v}_i
+		\btil{x}_{i+1} = (\bo{I} - \bo{L}_i \bo{H}) \btil{x}_{i+1}^- + \bo{L}_i\bo{v}_i
 	\end{cases}
 		\end{equation}		
+	
+		
 		
 	\end{flushleft}
 \end{frame}
@@ -351,7 +364,24 @@ Mean has a number of properties:
 	%\framesubtitle{How do we know the state?}
 	\begin{flushleft}
 		
-		We can compute mean dynamics (\emph{propagation}):
+		We can compute estimation error mean dynamics (\emph{propagation}):
+		%
+				\begin{align*}
+		E[\btil{x}_{i+1}^-] = 
+		E[\bo{A} \btil{x}_i + \bo{w}_i] = 
+		E[\bo{A} \btil{x}_i] + E[\bo{w}_i]  =
+		\bo{A}E[\btil{x}_i].
+				\end{align*}	
+		%
+				\begin{align*}
+		E[\btil{x}_{i+1}] = 
+		E[(\bo{I} - \bo{L}_i \bo{H}) \btil{x}_{i+1}^- + \bo{L}_i\bo{v}_i] =\\
+		=E[(\bo{I} - \bo{L}_i \bo{H}) \btil{x}_{i+1}^-]
+		= 
+		(\bo{I} - \bo{L}_i \bo{H}) E[\btil{x}_{i+1}^-]
+				\end{align*}				
+		
+		So, we obtain the following mean dynamics:
 		
 				\begin{equation}
 						\begin{cases}
@@ -376,30 +406,19 @@ Mean has a number of properties:
 		\begin{align*}
 				\bo{P}_{i+1}^- 
 				&= E[\btil{x}_{i+1}^- (\btil{x}_{i+1}^-)\T] = \\
-				&= \bo{A} \bo{P}_i \bo{A}\T +\bo{Q},
+				&= E[ (\bo{A} \btil{x}_i + \bo{w}_i) (\bo{A} \btil{x}_i + \bo{w}_i)\T] = \\
+				&= \bo{A} \bo{P}_i \bo{A}\T +\bo{Q}.
 		\end{align*}		
 	
-		With that, we can find \emph{a posteriori} estimation error covariance:
-	%
-		\begin{align*}
-		E[\btil{x}_{i+1} \btil{x}_{i+1}\T] 
-			&=
-			E[ (\bo{I} - \bo{L}_i \bo{H}) \btil{x}_{i+1}^- (\btil{x}_{i+1}^-)\T (\bo{I} - \bo{L}_i \bo{H})\T + \\
-			&+(\bo{I} - \bo{L}_i \bo{H}) \btil{x}_{i+1}^- \bo{v}_i\T +
-			\bo{v}_i (\btil{x}_{i+1}^-)\T (\bo{I} - \bo{L}_i \bo{H})\T +
-			\bo{v}_i \bo{v}_i\T]
-		\end{align*}
+		\bigskip
+	
+		\textcolor{mydarkgray}{Reminder: $E[\bo{w}_i \bo{w}_i\T] = \bo{Q}$ since $\bo{w} \sim \mathcal{N} (0, \bo{Q})$, $E[\btil{x}_i \bo{w}_i\T] = 0$ since the two variables are independent, and $E[\btil{x}_i \btil{x}_i\T] = \bo{P}_i$ by definition.}
 		
-		Assuming that $\btil{x}_{i+1}^-$ and $\bo{v}_i$ are uncorrelated, we get $E[(\bo{I} - \bo{L}_i \bo{H}) \btil{x}_{i+1}^- \bo{v}_i\T] = 0$ and $E[\bo{v}_i (\btil{x}_{i+1}^-)\T (\bo{I} - \bo{L}_i \bo{H})\T = 0]$. With that we simplify:
-		%
-		\begin{align*}
-			E[\btil{x}_{i+1} \btil{x}_{i+1}\T] 
-			&=
-			(\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- (\bo{I} - \bo{L}_i \bo{H})\T +\bo{R} 
-		\end{align*}
 		
 	\end{flushleft}
 \end{frame}
+
+
 
 
 
@@ -407,17 +426,48 @@ Mean has a number of properties:
 	%\framesubtitle{How do we know the state?}
 	\begin{flushleft}
 		
+		
+		With that, we can find \emph{a posteriori} estimation error covariance:
+		%
+		\begin{align*}
+			E[\btil{x}_{i+1} \btil{x}_{i+1}\T] 
+			=
+			E[ (\bo{I} - \bo{L}_i \bo{H}) \btil{x}_{i+1}^- (\btil{x}_{i+1}^-)\T (\bo{I} - \bo{L}_i \bo{H})\T + \\
+			+(\bo{I} - \bo{L}_i \bo{H}) \btil{x}_{i+1}^- \bo{v}_i\T +
+			\bo{v}_i (\btil{x}_{i+1}^-)\T (\bo{I} - \bo{L}_i \bo{H})\T +
+			\bo{L}_i \bo{v}_i \bo{v}_i\T \bo{L}_i\T]
+		\end{align*}
+		
+		Assuming that $\btil{x}_{i+1}^-$ and $\bo{v}_i$ are uncorrelated, we get $E[(\bo{I} - \bo{L}_i \bo{H}) \btil{x}_{i+1}^- \bo{v}_i\T] = 0$ and $E[\bo{v}_i (\btil{x}_{i+1}^-)\T (\bo{I} - \bo{L}_i \bo{H})\T] = 0$. With that we simplify:
+		%
+		\begin{align*}
+			E[\btil{x}_{i+1} \btil{x}_{i+1}\T] 
+			&=
+			(\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- (\bo{I} - \bo{L}_i \bo{H})\T +\bo{L}_i\bo{R}\bo{L}_i\T = \bo{P}_{i+1}
+		\end{align*}
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Observer gain}
+	%\framesubtitle{How do we know the state?}
+	\begin{flushleft}
+		
 		How do we pick $\bo{L}_i$? We can do it "the same way" as we did with LQR:
 		
 		\begin{equation}
-			\bo{L}_i = \bo{P}_i \bo{H}\T \bo{R}^{-1}
+			\bo{L}_i = \bo{P}_{i+1} \bo{H}\T \bo{R}^{-1}
 		\end{equation}
 	
-		In practice, it can be better to compute $\bo{L}_i$ before we compute $\bo{P}_i$. The following allows us to compute $\bo{L}_i$ based on $\bo{P}_{i-1}$:
+		In practice, it can be better to compute $\bo{L}_i$ before we compute $\bo{P}_{i+1}$. The following allows us to compute $\bo{L}_i$ based on $\bo{P}_{i+1}^-$:
 		
 		\begin{equation}
-			\bo{L}_i = \bo{P}_{i-1} \bo{H}\T (\bo{H} \bo{P}_{i-1} \bo{H}\T + \bo{R})^{-1}
+			\bo{L}_i = \bo{P}_{i+1}^- \bo{H}\T (\bo{H} \bo{P}_{i+1}^- \bo{H}\T + \bo{R})^{-1}
 		\end{equation}
+	
+		The derivation is in the Appendix B.
 	
 	
 	\end{flushleft}
@@ -595,6 +645,64 @@ Mean has a number of properties:
 	\end{flushleft}
 \end{frame}
 
+
+\begin{frame}
+	%\framesubtitle{How do we know the state?}
+	\begin{flushleft}
+		
+		\centering{\Huge Appendix B}
+		
+	\end{flushleft}
+\end{frame}
+
+\begin{frame}{Observer Gain, 1}
+	%\framesubtitle{How do we know the state?}
+	\begin{flushleft}
+		
+		Given observer gain $\bo{L}_i = \bo{P}_{i+1} \bo{H}\T \bo{R}^{-1}$ and autocovariance propagation $ \bo{P}_{i+1} = (\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- (\bo{I} - \bo{L}_i \bo{H})\T +\bo{L}_i\bo{R}\bo{L}_i\T$, we can derive expression for $\bo{L}_i$ as a function of $\bo{P}_{i+1}^-$:
+		%
+		\begin{align}
+			\bo{L}_i \bo{R} = \bo{P}_{i+1} \bo{H}\T 
+			\\
+			\bo{L}_i \bo{R}\bo{L}_i\T = \bo{P}_{i+1} \bo{H}\T \bo{L}_i\T
+			\\
+			\bo{P}_{i+1} = (\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- (\bo{I} - \bo{L}_i \bo{H})\T +\bo{P}_{i+1} \bo{H}\T \bo{L}_i\T
+			\\
+			\bo{P}_{i+1}(\bo{I}- \bo{H}\T \bo{L}_i\T) = (\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- (\bo{I} - \bo{L}_i \bo{H})\T
+		\end{align}
+		
+		Assuming that $\text{det}(\bo{I}- \bo{L}_i \bo{H} )\T \neq 0$, we can multiply on the right by $(\bo{I}- \bo{L}_i \bo{H} )^{-\top}$:
+		%
+		\begin{align}
+	\bo{P}_{i+1} = (\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- 
+		\end{align}		
+		
+	\end{flushleft}
+\end{frame}
+
+
+\begin{frame}{Observer Gain, 2}
+	%\framesubtitle{How do we know the state?}
+	\begin{flushleft}
+		
+		\begin{align}
+			\bo{P}_{i+1} &= (\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- 
+			\\
+			\bo{P}_{i+1}\bo{H}\T\bo{R}^{-1} &= (\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- \bo{H}\T\bo{R}^{-1}
+			\\
+			\bo{L}_i &= (\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- \bo{H}\T\bo{R}^{-1}
+			\\
+			\bo{L}_i\bo{R} &= (\bo{I} - \bo{L}_i \bo{H}) \bo{P}_{i+1}^- \bo{H}\T
+			\\
+			\bo{L}_i\bo{R} + \bo{L}_i \bo{H}\bo{P}_{i+1}^- \bo{H}\T &= \bo{P}_{i+1}^- \bo{H}\T 
+			\\
+			\bo{L}_i (\bo{R} + \bo{H}\bo{P}_{i+1}^- \bo{H}\T) &= \bo{P}_{i+1}^- \bo{H}\T 
+			\\
+			\bo{L}_i &= \bo{P}_{i+1}^- \bo{H}\T (\bo{R} + \bo{H}\bo{P}_{i+1}^- \bo{H}\T)^{-1}.  \ \ \ \qed
+		\end{align}		
+		
+	\end{flushleft}
+\end{frame}
 
 
 

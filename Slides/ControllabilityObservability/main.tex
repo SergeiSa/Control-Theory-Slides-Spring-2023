@@ -42,6 +42,10 @@
 	% \framesubtitle{Limited control}
 	\begin{flushleft}
 		
+		Equation $\text{det}(\bo{M} - \lambda\bo{I}) = 0$ is called \emph{characteristic equation} of matrix $\bo{M}$, its roots being eigenvalues of the matrix.
+		
+		\bigskip
+		
 		\begin{theorem}[Cayley–Hamilton]
 			A matrix $\bo{M} \in \R^{n, n}$ satisfies its own characteristic equation.
 		\end{theorem}
@@ -52,7 +56,7 @@
 			\bo{M}^n + a_{n-1}\bo{M}^{n-1} + ... + a_0\bo{I}  = 0
 		\end{equation}	
 		
-		Meaning that $\bo{M}^n$ is a linear combination of $\bo{M}^{n-1}$, $\bo{M}^{n-2}$, ..., $\bo{I}$.
+		Meaning that \textcolor{mydarkblue}{$\bo{M}^n$ is a linear combination of $\bo{M}^{n-1}$, $\bo{M}^{n-2}$, ..., $\bo{I}$}.
 		
 		
 	\end{flushleft}
@@ -78,7 +82,7 @@ Assume the initial state is $\bo{x}_1$. Then we can deduce that:
 \bo{x}_3 &= \bo{A} \bo{x}_2 + \bo{B} \bo{u}_2 = \bo{A} (\bo{A} \bo{x}_1 + \bo{B} \bo{u}_1) + \bo{B} \bo{u}_2 \\
 \bo{x}_4 &= \bo{A} \bo{x}_3 + \bo{B} \bo{u}_3 = \bo{A} (\bo{A} (\bo{A} \bo{x}_1 + \bo{B} \bo{u}_1) + \bo{B} \bo{u}_2) + \bo{B} \bo{u}_3 \\
 ... \\
-\bo{x}_{n+1} &= \bo{A}^n \bo{x}_1 + ... + 
+\bo{x}_{n+1} &= \bo{A}^n \bo{x}_1 + \bo{A}^{n-1} \bo{B} \bo{u}_1 + ... + 
 \bo{A}^{n - k} \bo{B} \bo{u}_{k} + ... + 
 \bo{B} \bo{u}_n
 \end{align*}
@@ -92,7 +96,7 @@ Assume the initial state is $\bo{x}_1$. Then we can deduce that:
 %\framesubtitle{Controllability matrix}
 \begin{flushleft}
 
-Equation $\bo{x}_{n+1} = \bo{A}^n \bo{x}_1 + ... 
+Equation $\bo{x}_{n+1} = \bo{A}^n \bo{x}_1 + \bo{A}^{n-1} \bo{B} \bo{u}_1 + ... 
 + \bo{A}^{n - k} \bo{B} \bo{u}_{k} + ...
 \bo{B} \bo{u}_n$ can be re-written as:
 
@@ -105,9 +109,9 @@ Equation $\bo{x}_{n+1} = \bo{A}^n \bo{x}_1 + ...
     \bo{A}^{n - 1} \bo{B}
     \end{bmatrix}    
     \begin{bmatrix}
-    \bo{u}_{k} \\
-    \bo{u}_{k-1} \\
-    \bo{u}_{k-2} \\ ... \\
+    \bo{u}_{n} \\
+    \bo{u}_{n-1} \\
+    \bo{u}_{n-2} \\ ... \\
     \bo{u}_{1}
     \end{bmatrix}
 \end{equation}
@@ -118,7 +122,7 @@ Notice that in order for the system to go from $\bo{x}_1$ to $\bo{x}_{n+1}$, vec
     \bo{A}^{n - 1} \bo{B}
     \end{bmatrix}$.
 
-Since $\bo{x}_{n+1}$ can be anything, and $\bo{x}_1$ might be equal to zero (among other possibilities), we should require that all vectors in $\R^n$ need to be in the column space of $\mathcal{C}$, meaning $\mathcal{C}$ needs to be full rank.
+Since $\bo{x}_{n+1}$ can be anything, and $\bo{x}_1$ might be equal to zero (among other possibilities), we should require that all vectors in $\R^n$ are in the column space of $\mathcal{C}$, meaning $\mathcal{C}$ needs to be full row rank.
 
 \end{flushleft}
 \end{frame}
@@ -141,36 +145,66 @@ For a system $\bo{x}_{i+1} = \bo{A}  \bo{x}_i + \bo{B} \bo{u}_i$, where $\bo{x} 
 
 
 
+
 \begin{frame}{Controllability matrix rank}
 	% \framesubtitle{Limited control}
 	\begin{flushleft}
 		
-		If you are interested why the controllability matrix for not include more columns, like $\bo{A}^n$, Consider the following: 
-		
-		The controllability matrix can be written as 
+		What happens if we add more columns to the controllability matrix, for example $\bo{A}^n \bo{B}$? Consider the matrix:
 		
 		\begin{equation}
-			\mathcal{C} = \begin{bmatrix}
-				\bo{I} &
-				\bo{A}  & ... &
-				\bo{A}^{n - 1} 
-			\end{bmatrix}
-			\begin{bmatrix}
-				\bo{B} & \bo{0} & ... & \bo{0} \\
-				\bo{0}  & \bo{B} & ... & \bo{0} \\
-				...  & ... & ... & ... \\
-				\bo{0}  & \bo{0} & ... & \bo{B} 
+			\mathcal{C}_+ = \begin{bmatrix}
+				\bo{B} &
+				\bo{A} \bo{B} & ... &
+				\bo{A}^{n - 1} \bo{B} &
+				\bo{A}^n \bo{B}
 			\end{bmatrix}
 		\end{equation}
 		
-		meaning that the rank of $\mathcal{C}$ depends only on matrix $\begin{bmatrix}
-			\bo{I} &
-			\bo{A}  & ... &
-			\bo{A}^{n - 1} 
-		\end{bmatrix}$. Adding  to it columns $\bo{A}^n$ does not change the rank, as $\bo{A}^n$ is a linear combination of the other columns, as we proved in the previous slide.
+		But from Cayley–Hamilton we know that: 
+		
+		\begin{align}
+			\bo{A}^n = -a_{n-1}\bo{A}^{n-1} - ... - a_0\bo{I} 
+			\\
+			\bo{A}^n\bo{B} = -a_{n-1}\bo{A}^{n-1}\bo{B} - ... - a_0\bo{B}
+		\end{align}
+		
+		Meaning that columns of $\bo{A}^n\bo{B}$ are expressed as linear combination of columns of $\mathcal{C}$, hence the matrix $\mathcal{C}_+$ has the same rank as $\mathcal{C}$.
 		
 	\end{flushleft}
 \end{frame}
+
+
+%\begin{frame}{Controllability matrix rank}
+%	% \framesubtitle{Limited control}
+%	\begin{flushleft}
+%		
+%		If you are interested why the controllability matrix for not include more columns, like $\bo{A}^n$, Consider the following: 
+%		
+%		The controllability matrix can be written as 
+%		
+%		\begin{equation}
+%			\mathcal{C} = \begin{bmatrix}
+%				\bo{I} &
+%				\bo{A}  & ... &
+%				\bo{A}^{n - 1} 
+%			\end{bmatrix}
+%			\begin{bmatrix}
+%				\bo{B} & \bo{0} & ... & \bo{0} \\
+%				\bo{0}  & \bo{B} & ... & \bo{0} \\
+%				...  & ... & ... & ... \\
+%				\bo{0}  & \bo{0} & ... & \bo{B} 
+%			\end{bmatrix}
+%		\end{equation}
+%		
+%		meaning that the rank of $\mathcal{C}$ depends only on matrix $\begin{bmatrix}
+%			\bo{I} &
+%			\bo{A}  & ... &
+%			\bo{A}^{n - 1} 
+%		\end{bmatrix}$. Adding  to it columns $\bo{A}^n$ does not change the rank, as $\bo{A}^n$ is a linear combination of the other columns, as we proved in the previous slide.
+%		
+%	\end{flushleft}
+%\end{frame}
 
 
 
@@ -252,8 +286,8 @@ It is easier to represent this matrix in its transposed form:
 \end{frame}
 
 
-\begin{frame}{Observability of Discrete LTI}
-\framesubtitle{Observability criterion}
+\begin{frame}{Observability criterion}
+%\framesubtitle{Observability criterion}
 \begin{flushleft}
 
 \begin{block}{Observability}
