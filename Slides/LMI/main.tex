@@ -46,7 +46,7 @@
 				Given $\bo{A}$, find such $\bo{S}\succ 0$ that $\bo{A}^\top\bo{S} + \bo{S}\bo{A} \prec 0$.
 			\end{example}
 			
-			Notice that the last example is continious-time Lyapunov eq. for LTI system $\dx{x} = \bo{A}\bo{x}$, and if such $\bo{S}$ exists the system is stable. 
+			Notice that the last example is continious-time Lyapunov eq. for LTI system $\dot{\bo{x}} = \bo{A}\bo{x}$, and if such $\bo{S}$ exists the system is stable. 
 			
 		\end{flushleft}
 	\end{frame}
@@ -57,11 +57,11 @@
 		%	\framesubtitle{Part 1}
 		\begin{flushleft}
 			
-			Consider a system $\dx{x} = \bo{A}\bo{x} + \bo{B}\bo{u}$, control $\bo{u} = \bo{K}\bo{x}$ and a Lyapunov function $V = \bo{x}^\top\bo{S}\bo{x}$, $\bo{S} \succ 0$.
+			Consider a system $\dot{\bo{x}} = \bo{A}\bo{x} + \bo{B}\bo{u}$, control $\bo{u} = \bo{K}\bo{x}$ and a Lyapunov function $V = \bo{x}^\top\bo{S}\bo{x}$, $\bo{S} \succ 0$.
 			
 			\bigskip
 			
-			Closed-form of the system is $\dx{x} = (\bo{A} + \bo{B}\bo{K})\bo{x}$, and full derivative of the Lyapunov function:
+			Closed-form of the system is $\dot{\bo{x}} = (\bo{A} + \bo{B}\bo{K})\bo{x}$, and full derivative of the Lyapunov function:
 			
 			\begin{equation}
 				\dot V = \bo{x}^\top (\bo{A} + \bo{B}\bo{K})^\top\bo{S}\bo{x} + \bo{x}^\top\bo{S} (\bo{A} + \bo{B}\bo{K}) \bo{x} \leq 0
@@ -111,7 +111,7 @@
 		%	\framesubtitle{Part 1}
 		\begin{flushleft}
 			
-			Consider a system $\dx{x} = \bo{A}\bo{x}$, but when you don't know $\bo{A}$ exactly. In other words, you don't know the model exactly. This is not to say that we know nothing about the model, but there is an uncertainty in our knowledge.
+			Consider a system $\dot{\bo{x}} = \bo{A}\bo{x}$, but when you don't know $\bo{A}$ exactly. In other words, you don't know the model exactly. This is not to say that we know nothing about the model, but there is an uncertainty in our knowledge.
 			
 			\bigskip
 			
@@ -119,7 +119,7 @@
 			
 			\begin{equation}
 				\label{eq:uncertain}
-				\dx{x} = (\bo{A} + \bo{F} \Delta \bo{E})\bo{x}
+				\dot{\bo{x}} = (\bo{A} + \bo{F} \Delta \bo{E})\bo{x}
 			\end{equation}
 			%
 			where $\bo{F}$ and $\bo{E}$ are arbitrary matrices, and $\Delta$ is a \emph{norm-bounded} matrix: $||\Delta|| \leq 1$.
@@ -288,7 +288,7 @@
 			Let us consider the following system:
 			
 			\begin{equation}
-				\dx{x} = \bo{A}\bo{x}
+				\dot{\bo{x}} = \bo{A}\bo{x}
 			\end{equation}
 			%
 			where $\bo{A} = \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i$, $\alpha_i \geq 0$, $\sum\limits_{i=1}^{n} \alpha_i = 1$ with known $\bo{A}_i$ but unknown coefficients $\alpha_i$. Is it stable for all possible values of $\alpha_i$? Note that we can't use eigenvalue analysis in this case.
@@ -307,7 +307,7 @@
 		\begin{flushleft}
 			
 			\begin{theorem}[Quadratic stability]
-				$\bo{A}_i^\top \bo{S} + \bo{S} \bo{A}_i \leq 0$ implies $\dx{x} = \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i \bo{x}$ is stable, where $\alpha_i \geq 0$, $\sum\limits_{i=1}^{n} \alpha_i = 1$
+				$\bo{A}_i^\top \bo{S} + \bo{S} \bo{A}_i \leq 0$ implies $\dot{\bo{x}} = \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i \bo{x}$ is stable, where $\alpha_i \geq 0$, $\sum\limits_{i=1}^{n} \alpha_i = 1$
 			\end{theorem}
 			
 			\bigskip
@@ -329,7 +329,7 @@
 			Let us consider the following system:
 			
 			\begin{equation}
-				\dx{x} = \bo{A}\bo{x} + \bo{B}\bo{x}
+				\dot{\bo{x}} = \bo{A}\bo{x} + \bo{B}\bo{x}
 			\end{equation}
 			%
 			where $\bo{A} = \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i$, $\alpha_i \geq 0$, $\sum\limits_{i=1}^{n} \alpha_i = 1$ with known $\bo{A}_i$ but unknown coefficients $\alpha_i$. How to design control law $\bo{u} = \bo{K}\bo{x}$ making the system stable for all possible values of $\alpha_i$? 
@@ -339,7 +339,7 @@
 			The closed-loop form of the system is:
 			
 			\begin{equation}
-				\dx{x} = (\sum\limits_{i=1}^{n} \alpha_i \bo{A}_i + \bo{B}\bo{K})\bo{x}
+				\dot{\bo{x}} = (\sum\limits_{i=1}^{n} \alpha_i \bo{A}_i + \bo{B}\bo{K})\bo{x}
 			\end{equation}
 			
 			
@@ -411,17 +411,7 @@
 	
 	
 	
-	\begin{frame}{Thank you!}
-		\centerline{Lecture slides are available via Moodle.}
-		\bigskip
-		\centerline{You can help improve these slides at:}
-		\centerline{\mygit}
-		\bigskip
-		\centerline{Check Moodle for additional links, videos, textbook suggestions.}
-		\bigskip
-		
-		\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
-	\end{frame}
+\myqrframe
 	
 	
 	
