@@ -4,7 +4,7 @@
 
 
 \title{Lyapunov Theory, Lyapunov equations}
-\subtitle{Control Theory, Lecture 7}
+\subtitle{Control Theory, Lecture 12}
 \author{by Sergei Savin}
 \centering
 \date{\mydate}
@@ -55,8 +55,8 @@ This is not the only type of stability as you remember, you are invited to study
 \end{frame}
 
 
-\begin{frame}{Lyapunov method: examples}
-\framesubtitle{Example 1}
+\begin{frame}{Lyapunov method: Example 1}
+%\framesubtitle{Example 1}
 \begin{flushleft}
 
 Take dynamical system $\dot{x} = -x$. 
@@ -76,55 +76,113 @@ This satisfies the Lyapunov criteria, so the system is stable. It is in fact asy
 
 
 
-\begin{frame}{Lyapunov method: examples}
-\framesubtitle{Example 2}
-\begin{flushleft}
+\begin{frame}{Lyapunov method: Example 2}
+%	\framesubtitle{Example 3}
+	\begin{flushleft}
+		
+		Consider pendulum $\ddot{q} = f(q, \dot{q}) = -\dot{q} - \sin(q)$. 
+		
+		\bigskip
+		
+		We propose a \emph{Lyapunov function candidate} $V(q, \dot{q}) = E(q, \dot{q}) = \frac{1}{2} \dot{q}^2 + 1 - \cos(q)\geq 0$, where $E(q, \dot{q})$ is total energy of the system. Let's find its derivative:
+		
+		\begin{equation}
+			\dot V(q, \dot{q}) = 
+			\frac{\partial V}{\partial q}       \dot{q} +
+			\frac{\partial V}{\partial \dot{q}} f(q, \dot{q}) = 
+			\dot{q} \sin(q) + \dot{q}(-\dot{q} - \sin(q)) =
+			-\dot{q}^2 \leq 0
+		\end{equation}
+		
+		
+		This satisfies the Lyapunov criteria, so the system is stable. It is not proven to be asymptotically stable, because $\dot V(q, \dot{q}) = 0$ for any $q$, as long as $\dot{q} = 0$.
+		
+	\end{flushleft}
+\end{frame}
 
-Consider oscillator $\ddot{q} = f(q, \dot{q}) = -\dot{q}$. 
 
-\bigskip
-
-We propose a \emph{Lyapunov function candidate} $V(q, \dot{q}) = T(q, \dot{q}) = \frac{1}{2} \dot{q}^2 \geq 0$, where $T(q, \dot{q})$ is kinetic energy of the system. Let's find its derivative:
-
-\begin{equation}
-    \dot V(q, \dot{q}) = 
-    \frac{\partial V}{\partial q}       \dot{q} +
-    \frac{\partial V}{\partial \dot{q}} f(q, \dot{q}) = 
-    \dot{q} (-\dot{q}) = -\dot{q}^2 \leq 0
-\end{equation}
-
-
-This satisfies the Lyapunov criteria, so the system is stable. But it is not proven to be asymptotically stable, because $\dot V(q, \dot{q}) = 0$ for any $q$ as long as $\dot{q} = 0$.
-
-\end{flushleft}
+\begin{frame}{LaSalle's invariance principle, 1}
+	% \framesubtitle{Parameter estimation}
+	\begin{flushleft}
+		
+		\begin{block}{LaSalle's invariance principle}
+			Autonomous dynamic system $\dot{\bo{x}} = \bo{f}(\bo{x})$ is assymptotically stable, if there exists a scalar function $V = V(\bo{x}) > 0$, whose time derivative is negative $\dot V(\bo{x}) \leq 0$, except $V(\bo{0}) = 0$, where the set $\{\bo{x}: \   \dot V(\bo{x}) = 0  \}$ does not contain non-trivial trajectories.
+		\end{block}
+	
+		\bigskip
+		
+		A trivial trajectory is $\bo{x}(t) = 0$. Unlike Lyapunov condition, LaSalle's principle allows us to prove assymptotic stability even for systems with $\dot V(\bo{x}) = 0$.
+		
+		
+	\end{flushleft}
 \end{frame}
 
 
 
 
-\begin{frame}{Lyapunov method: examples}
-\framesubtitle{Example 3}
-\begin{flushleft}
-
-Consider pendulum $\ddot{q} = f(q, \dot{q}) = -\dot{q} - sin(q)$. 
-
-\bigskip
-
-We propose a \emph{Lyapunov function candidate} $V(q, \dot{q}) = E(q, \dot{q}) = \frac{1}{2} \dot{q}^2 + 1 - cos(q)\geq 0$, where $E(q, \dot{q})$ is total energy of the system. Let's find its derivative:
-
-\begin{equation}
-    \dot V(q, \dot{q}) = 
-    \frac{\partial V}{\partial q}       \dot{q} +
-    \frac{\partial V}{\partial \dot{q}} f(q, \dot{q}) = 
-    \dot{q} sin(q) + \dot{q}(-\dot{q} - sin(q)) =
-    -\dot{q}^2 \leq 0
-\end{equation}
-
-
-This satisfies the Lyapunov criteria, so the system is stable. It is not proven to be asymptotically stable, because $\dot V(q, \dot{q}) = 0$ for any $q$, as long as $\dot{q} = 0$.
-
-\end{flushleft}
+\begin{frame}{LaSalle's invariance principle, 2}
+	% \framesubtitle{Parameter estimation}
+	\begin{flushleft}
+		
+		Local version of LaSalle's invariance principle has the following form:
+		
+		\begin{block}{Local LaSalle's invariance principle}
+			Autonomous dynamic system $\dot{\bo{x}} = \bo{f}(\bo{x})$ is assymptotically stable in the region $\mathcal D$, if there exists a scalar function $V = V(\bo{x}) > 0$, whose time derivative is negative $\dot V(\bo{x}) \leq 0$, except $V(\bo{0}) = 0$, where the set $\mathcal M = \{\bo{x}: \   \dot V(\bo{x}) = 0  \} \cap \mathcal D$ does not contain non-trivial trajectories.
+		\end{block}
+		
+		
+	\end{flushleft}
 \end{frame}
+
+
+
+\begin{frame}{LaSalle principle: Example 2}
+	%	\framesubtitle{Example 3}
+	\begin{flushleft}
+		
+			In our previous example $\dot V(q, \dot{q}) = 0$ for any $q$, as long as $\dot{q} = 0$. But the set $\{(q, \dot{q}): \   \dot{q} = 0 \}$ contains no trajectories of the system $\ddot{q}  = -\dot{q} - \sin(q)$ other than $q(t) = 0$ in the region $-\frac{\pi}{2} < q < \frac{\pi}{2}$. So, LaSalle principle proves assymptotic stability.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{LaSalle principle: Example 3}
+	%\framesubtitle{Example 2}
+	\begin{flushleft}
+		
+		Consider oscillator $\ddot{q} = f(q, \dot{q}) = -\dot{q}$. 
+		
+		\bigskip
+		
+		We propose a \emph{Lyapunov function candidate} $V(q, \dot{q}) = T(q, \dot{q}) = \frac{1}{2} \dot{q}^2 \geq 0$, where $T(q, \dot{q})$ is kinetic energy of the system. Let's find its derivative:
+		
+		\begin{equation}
+			\dot V(q, \dot{q}) = 
+			\frac{\partial V}{\partial q}       \dot{q} +
+			\frac{\partial V}{\partial \dot{q}} f(q, \dot{q}) = 
+			\dot{q} (-\dot{q}) = -\dot{q}^2 \leq 0
+		\end{equation}
+		
+		
+		This satisfies the Lyapunov criteria, so the system is stable. Note that $\dot V(q, \dot{q}) = 0$ for any $q$ as long as $\dot{q} = 0$. But the set $\{(q, \dot{q}): \   \dot{q} = 0 \}$ contains infinitely many trajectories of the system $\ddot{q} = -\dot{q}$ other than $q(t) = 0$, for example $q(t) = 1$ or $q(t) = -2$. So, LaSalle principle does not prove assymptotic stability in this case.
+		
+	\end{flushleft}
+\end{frame}
+
+
+%\begin{frame}{LaSalle principle: Example 3}
+%	%\framesubtitle{Example 2}
+%	\begin{flushleft}
+%		
+%		In our previous example $\dot V(q, \dot{q}) = 0$ for any $q$ as long as $\dot{q} = 0$. But the set $\{(q, \dot{q}): \   \dot{q} = 0 \}$ contains infinitely many trajectories of the system $\ddot{q} = -\dot{q}$ other than $q(t) = 0$, for example $q(t) = 1$ or $q(t) = -2$. So, LaSalle principle does not prove assymptotic stability in this case.
+%		
+%	\end{flushleft}
+%\end{frame}
+
+
+
+
 
 
 \begin{frame}{Linear case}
@@ -257,16 +315,6 @@ In practice, you can easily use Lyapunov equations for stability verification. P
 
 
 
-\begin{frame}{Thank you!}
-	\centerline{Lecture slides are available via Moodle.}
-	\bigskip
-	\centerline{You can help improve these slides at:}
-	\centerline{\mygit}
-	\bigskip
-	\centerline{Check Moodle for additional links, videos, textbook suggestions.}
-	\bigskip
-	
-	\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
-\end{frame}
+\myqrframe
 
 \end{document}
